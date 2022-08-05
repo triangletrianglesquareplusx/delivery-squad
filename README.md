@@ -1,8 +1,8 @@
 # Specifics
 
-This is a group project for a React Internship at SoftServe.
-Currently this has:
-reactjs via create-react-app
+This is a group project for a React Internship at SoftServe.  
+Currently this has:  
+reactjs via create-react-app  
 react router via npm install react-router-dom@6
 
 # Getting Started with Create React App
