@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <div className={`max-w-8xl p-3 mx-10 flex items-center justify-between`}>
       <div
-        className={`font-inter text-regalBlue font-extrabold flex items-center gap-1`}
+        className={`font-inter text-regalBlue text-3xl md:text-base font-extrabold flex items-center gap-1`}
       >
         <MdLocationPin className={`text-primaryRed`} />
         <p>Atlas</p>
@@ -28,7 +28,7 @@ export default function Header() {
         <ControlButton name={"FAQ"} className={`px-6 py-3 font-semibold`} />
         <ControlButton
           name={"Download App"}
-          className={`px-6 py-3 bg-primaryRed rounded-lg shadow-md text-white text-sm font-medium font-inter`}
+          className={`px-6 py-2 bg-primaryRed rounded-lg shadow-md text-white text-sm font-medium font-inter`}
         />
       </div>
     </div>
