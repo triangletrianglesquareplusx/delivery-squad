@@ -1,12 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import Header from "./components/Header";
 function App() {
-  return (
-    <div>
-      <p className={"bg-red-500 font-inter"}>Hey react</p>
-    </div>
-  );
+  return <Header />;
 }
 
 export default App;
