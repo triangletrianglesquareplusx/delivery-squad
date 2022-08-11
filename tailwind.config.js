@@ -8,6 +8,7 @@ module.exports = {
       },
       colors: {
         regalBlue: "#9672FF",
+        primaryRed: "#FD6D61",
       },
     },
   },

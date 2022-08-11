@@ -1,10 +1,14 @@
 import ControlButton from "../utilities/ControlButton";
 import React from "react";
+import { MdLocationPin } from "react-icons/md";
 
 export default function Header() {
   return (
-    <div className={`max-w-7xl p-3 mx-auto flex items-center justify-between`}>
-      <div className={`font-inter text-regalBlue font-extrabold`}>
+    <div className={`max-w-8xl p-3 mx-10 flex items-center justify-between`}>
+      <div
+        className={`font-inter text-regalBlue font-extrabold flex items-center gap-1`}
+      >
+        <MdLocationPin className={`text-primaryRed`} />
         <p>Atlas</p>
       </div>
       <div>
@@ -24,7 +28,7 @@ export default function Header() {
         <ControlButton name={"FAQ"} className={`px-6 py-3 font-semibold`} />
         <ControlButton
           name={"Download App"}
-          className={`px-6 py-3 bg-red-400 rounded-lg shadow-md text-white text-sm font-medium font-inter`}
+          className={`px-6 py-3 bg-primaryRed rounded-lg shadow-md text-white text-sm font-medium font-inter`}
         />
       </div>
     </div>
