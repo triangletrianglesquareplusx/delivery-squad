@@ -5,20 +5,26 @@ import ProductCard from "../utilities/ProductCard";
 export default function HeroSection() {
   return (
     <div
-      className={`font-inter flex justify-around items-center w-8xl p-3 h-80 border border-black`}
+      className={`font-inter flex justify-center md:justify-around items-center p-3 h-40 md:h-60 lg:h-80 border border-black`}
     >
       <div>
-        <div>
+        <div className={`container`}>
           <div className={`flex flex-row gap-2 md:flex-col`}>
-            <h1 className={`text-6xl font-bold`}>Navigate to the</h1>
-            <h1 className={`text-6xl font-bold`}>
+            <h1
+              className={`text-2xl sm:text-3xl md:text-5xl font-bold whitespace-nowrap`}
+            >
+              Navigate to the
+            </h1>
+            <h1 className={`text-2xl sm:text-3xl md:text-5xl font-bold`}>
               <span className={`text-primaryRed`}>Atlas</span> for VIT
             </h1>
           </div>
 
-          <p className={`text-sm`}>All in one resource guide for VIT</p>
+          <p className={`text-md md:text-sm`}>
+            All in one resource guide for VIT
+          </p>
         </div>
-        <div className={`mt-5`}>
+        <div className={`hidden lg:block lg:mt-5`}>
           <div className={`flex items-center`}>
             <IoLogoGooglePlaystore className={`absolute text-white ml-3`} />
             <ControlButton
@@ -30,7 +36,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <div>
+      <div className={`hidden md:block`}>
         {/*This is where the four images will be */}
         <div className={`flex flex-row gap-4`}>
           <ProductCard
