@@ -13,7 +13,7 @@ export default function Header() {
       </div>
       <div className={`flex`}>
         <ControlButton
-          name={"Trending"}
+          name={"Trendingssssssssss"}
           className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
         />
         <ControlButton
