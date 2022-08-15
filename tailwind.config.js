@@ -26,7 +26,8 @@ module.exports = {
         regalBlue: "#9672FF",
         primaryRed: "#FD6D61",
         selectedBlue: "#693de7",
-        mutedGray: "#f4f1ff"
+        mutedGray: "#f4f1ff",
+        scaledDownWhite: "#f2f2f2",
 
       },
     },
