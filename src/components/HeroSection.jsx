@@ -5,7 +5,7 @@ import ProductCard from "../utilities/ProductCard";
 export default function HeroSection() {
   return (
     <div
-      className={`font-inter flex justify-center md:justify-around items-center p-3 h-40 md:h-60 lg:h-80`}
+      className={`font-inter flex justify-center md:justify-between w-9/12 mx-auto items-center p-3 h-40 md:h-60 lg:h-80`}
     >
       <div>
         <div className={`container`}>
@@ -36,9 +36,9 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      <div className={`hidden md:block`}>
+      <div className={`hidden md:block md:w-5/12 lg:w-6/12`}>
         {/*This is where the four images will be */}
-        <div className={`flex flex-row gap-4`}>
+        <div className={`flex flex-row justify-between gap-4`}>
           <ProductCard
             className={"w-6/12"}
             alt={"rih"}
