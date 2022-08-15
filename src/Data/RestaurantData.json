@@ -1,0 +1,75 @@
+{
+    "cards": [
+        {       "id": 1,
+                "name": "Shtastliveca",
+                "image": "/images/ali-inay-unsplash.jpg",
+                "type": "Restaurant"
+            },
+            {
+                "id": 2,
+                "name": "Raketa Rakia Bar",
+                "image": "/images/nick-karvounis-unsplash.jpg",
+                "type": "Bar"
+            },
+            { 
+                "id": 3,
+                "name": "Vino Vino",
+                "image": "/images/jay-wennington-unsplash.jpg",
+                "type": "Restaurant"
+            },
+            {
+                "id": 4,
+                "name": "Spice House",
+                "image": "/images/ali-inay-unsplash.jpg",
+                "type": "Restaurant"
+            },
+            {
+                "id": 5,
+                "name": "Boom! Burgers",
+                "image": "/images/nick-karvounis-unsplash.jpg",
+                "type": "Fast food"
+            },
+            {
+                "id": 6,
+                "name": "Street Chefs",
+                "image": "/images/jay-wennington-unsplash.jpg",
+                "type": "Fast food"
+            },
+            {
+                "id": 7,
+                "name": "Fabrika Daga",
+                "image": "/images/ali-inay-unsplash.jpg",
+                "type": "Fast food"
+            },
+            {
+                "id": 8,
+                "name": "Farmer’s",
+                "image": "/images/nick-karvounis-unsplash.jpg",
+                "type": "Fast food"
+            },
+            {
+                "id": 9,
+                "name": "The Little Things",
+                "image": "/images/jay-wennington-unsplash.jpg",
+                "type": "Restaurant"
+            },
+            {
+                "id": 10,
+                "name": "Stage Bar",
+                "image": "/images/ali-inay-unsplash.jpg",
+                "type": "Bar"
+            },
+            {
+                "id": 11,
+                "name": "Swing",
+                "image": "/images/nick-karvounis-unsplash.jpg",
+                "type": "Bar"
+            },
+            {
+                "id": 12,
+                "name": "Bar Billiard",
+                "image": "/images/jay-wennington-unsplash.jpg",
+                "type": "Bar"
+            }
+    ]
+}
