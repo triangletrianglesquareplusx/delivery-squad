@@ -5,7 +5,7 @@ import ProductCard from "../utilities/ProductCard";
 export default function HeroSection() {
   return (
     <div
-      className={`font-inter flex justify-center md:justify-between w-9/12 mx-auto items-center p-3 h-40 md:h-60 lg:h-80`}
+      className={`font-inter flex justify-center md:justify-between w-10/12 mx-auto items-center p-3 h-40 md:h-60 lg:h-80`}
     >
       <div>
         <div className={`container`}>

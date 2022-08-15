@@ -25,6 +25,9 @@ module.exports = {
       colors: {
         regalBlue: "#9672FF",
         primaryRed: "#FD6D61",
+        selectedBlue: "#693de7",
+        mutedGray: "#f4f1ff"
+
       },
     },
   },

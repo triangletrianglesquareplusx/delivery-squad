@@ -4,7 +4,7 @@ import { MdLocationPin } from "react-icons/md";
 
 export default function Header() {
   return (
-    <div className={`flex justify-around items center p-3`}>
+    <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
       <div
         className={`font-inter text-regalBlue text-3xl md:text-xl font-extrabold flex items-center gap-1`}
       >
