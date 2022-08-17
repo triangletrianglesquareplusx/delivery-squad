@@ -2,6 +2,7 @@ import React from 'react';
 // import RestaurantData from '../Data/RestaurantData.json';
 import RestaurantCard from '../RestaurantCard/RestaurantCard'
 import { useState, useEffect } from 'react';
+import BacktoTopButton from '../BacktoTopButton/BacktoTopButton';
 // import '../App.css';
 
 function Restaurants(props) {
@@ -21,6 +22,7 @@ function Restaurants(props) {
             <RestaurantCard data={card} key={card.id} />
             )}
         </div>
+        <BacktoTopButton />
       </>
   )
 }

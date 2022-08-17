@@ -16,7 +16,6 @@ function App() {
       <Searchbar />
       <FilterSortBand />
       <Restaurants />
-      <BacktoTopButton />
       <Footer />
     </>
   );
