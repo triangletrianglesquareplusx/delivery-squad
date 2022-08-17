@@ -11,7 +11,7 @@ function ExpandedProductCard({className, src}) {
                 <p className="text-sm">RS 800 for 2 people</p>
                 <p className="hidden lg:block lg:text-sm">ETA : 5 minutes from VIT</p>
             </div>
-            <ControlButton name={"Explore"} className="px-2 py-1 text-sm text-blue-600 border border-blue-600 rounded-md"/>
+            <ControlButton name={"Explore"} className="px-2 py-1 text-sm text-blue-600 border border-blue-600 rounded-md hover:bg-gray-300"/>
         </div>
         
     </div>
