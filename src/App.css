@@ -14,6 +14,30 @@
     margin-bottom: 8vh;
   }
 
+  .header-container .navigation-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .header-container .navigation-menu button {
+    flex: 0.5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 159px;
+    height: 49px;
+    left: 1162px;
+    top: 15px;
+    color: #FFFFFF;
+    background: #FD6D61;
+    box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.16);
+    border-radius: 10px;
+  }
+
   .restaurants-title {
     display: flex;
     flex-direction: column;
@@ -31,19 +55,64 @@
   .searchbar {
     display: flex;
     align-items: center;
-    padding: 12px 32px 12px 16px;
-    gap: 10px;
-    width: 459px;
-    height: 48px;
+    padding: 1vh;
+    width: 30vw;
+    height: 6vh;
     background: #F4F4F4;
     border-radius: 8px;
   }
 
   .filtersort-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-top: 5vh;
+  }
+
+  .filter-container .filterBy {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 122px;
+    height: 45px;
+    left: 303px;
+    top: 408px;
+    background: #693DE7;
+    box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
+    border-radius: 10px;
+  }
+
+  .sort-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 394px;
+    height: 45px;
+    left: 743px;
+    top: 408px;
+    background: #F4F4F4;
+    box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
+    border-radius: 10px;
+  }
+  
+  .sort-container .sortBy {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex: 1;
+    width: 116px;
+    height: 45px;
+    left: 743px;
+    top: 408px;
+    background: #693DE7;
+    box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
+    border-radius: 10px;
+  }
+
+  .sort-container .sort-categories {
+    flex: 2;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
   .restaurants-container {
@@ -56,6 +125,50 @@
     margin-left: 7%;
   }
 
+  .resto-card {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-grow: inherit;
+    position: relative;
+    height: 50vh;
+    margin-left: 4.5vw;
+    margin-bottom: 5vh;
+    border-radius: 10%;
+    box-shadow: 8px 8px 28px 1px rgba(79,79,79,0.55);
+    background-color: #fafafa;
+  }
+
+  .resto-card .content {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .resto-card .content .text {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    margin-left: 2vw;
+    margin-top: -5vh;
+  }
+
+  .resto-card .content .map-icon {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2vh;
+  }
+
+  .backtop-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    margin-right: 8vw;
+  }
+
   .footer-container {
     display: flex;
     flex-direction: row;
@@ -65,34 +178,20 @@
     margin-top: 10vh;
     background: rgba(239, 239, 239, 0.83);
   }
-}
 
-.header-container .navigation-menu {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
+  .nav-footer {
+    flex: 4;
+    margin-bottom: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10vw;
+  }
 }
 
 .header-container .navigation-menu nav {
   flex: 3;
-}
-
-.header-container .navigation-menu button {
-  flex: 0.5;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  width: 159px;
-  height: 49px;
-  left: 1162px;
-  top: 15px;
-  color: #FFFFFF;
-  background: #FD6D61;
-  box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.16);
-  border-radius: 10px;
 }
 
 .header-container .navigation-menu ul li {
@@ -132,14 +231,15 @@
   height: 0px;
   top: 33%;
   left: 45%;
-  border: 6px solid #FD6D61; 
+  border: 3px solid #FD6D61; 
+  border-radius: 10px;
 } 
 
 .restaurants-title p {
   height: 29px;
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1em;
   line-height: 8vh;
   text-transform: capitalize;
@@ -152,24 +252,19 @@
 }
 
 .searchbar input {
-  width: 131px;
-  height: 24px;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 24px;
+  font-size: 1em;
+  line-height: 2vh;
   text-align: center;
-  color: #999999;
   flex: none;
   order: 1;
   flex-grow: 0;
-}
-
-.filtersort-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  cursor: pointer;
+  border: none;
+  color: #999999;
+  background-color: #F4F4F4;
 }
 
 .filter-container {
@@ -177,22 +272,15 @@
   height: 45px;
   left: 303px;
   top: 408px;
+  margin-right: 6vw;
   background: #F4F4F4;
   box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
   border-radius: 10px;
 }
 
-.filter-container .filterBy {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 122px;
-  height: 45px;
-  left: 303px;
-  top: 408px;
-  background: #693DE7;
-  box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
-  border-radius: 10px;
+.filter-container .filterBy .filter-icon {
+  width: 2.5vh;
+  height: 2.5vh;
 }
 
 .filter-container .filterBy p {
@@ -204,27 +292,9 @@
   color: #FFFFFF;
 }
 
-.sort-container {
-  width: 394px;
-  height: 45px;
-  left: 743px;
-  top: 408px;
-  background: #F4F4F4;
-  box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
-  border-radius: 10px;
-}
-
-.sort-container .sortBy {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 116px;
-  height: 45px;
-  left: 743px;
-  top: 408px;
-  background: #693DE7;
-  box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
-  border-radius: 10px;
+.sort-container .sortBy .sort-icon {
+  width: 2.5vh;
+  height: 2.5vh;
 }
 
 .sort-container .sortBy p {
@@ -236,30 +306,70 @@
   color: #FFFFFF;
 }
 
-.resto-card {
-  flex-basis: 24%;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  height: 50vh;
-  margin-left: 5vw;
-  margin-bottom: 5vh;
-  border: 1px solid black;
+.sort-container .sort-categories button {
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.resto-card .content .resto-image {
+  width: 22vw;
+  height: 35vh;
+  /* border: 1px solid black; */
   border-radius: 10%;
-  box-shadow: 8px 8px 28px 1px rgba(79,79,79,0.55);
+}
+
+.resto-card .content .resto-image img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  object-fit: contain;  
+}
+
+.resto-card .content .star-icon {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 22%;
+  height: 8%;
+  position: absolute;
+  top: 3vh;
+  right: 2vw;
+  /* border: 1px solid black; */
+  border-radius: 10px;
   background-color: #fafafa;
 }
 
-/* .resto-card .content {
-  display: flex;
-  
-} */
+.resto-card .content .star-icon img {
+  width: 2.2vh;
+  height: 2.2vh;
+}
 
-.resto-card .content figure img {
-  /* max-width:100%; */
-  width: 20vw;
-  height: 25vh;
-  overflow: hidden;
+.resto-card .content .map-icon img {
+  width: 2.5vh;
+  height: 2.5vh;
+}
+
+.backtop-container button {
+  border: none;
+  margin-right: 1vw;
+  cursor: pointer;
+}
+
+.backtop-container .top-icon img{
+  width: 3.5vh;
+  height: 3.5vh;
+}
+
+.backtop-container p {
+  height: 29px;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 4vh;
+  color: #FD6D61;
 }
 
 .footer-container .button-footer {
@@ -272,16 +382,6 @@
   border-radius: 10px;
   color: #FFFFFF;
   background: #FD6D61;
-}
-
-.nav-footer {
-  flex: 4;
-  margin-bottom: 10vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  margin-right: 10vw;
 }
 
 .nav-footer > ul li {

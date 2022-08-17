@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import BacktoTopButton from './BacktoTopButton/BacktoTopButton';
 import FilterSortBand from './FilterSortBand/FilterSortBand';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
@@ -15,6 +16,7 @@ function App() {
       <Searchbar />
       <FilterSortBand />
       <Restaurants />
+      <BacktoTopButton />
       <Footer />
     </>
   );

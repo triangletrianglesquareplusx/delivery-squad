@@ -6,12 +6,20 @@ class RestaurantCard extends React.Component {
     return (
       <article className="resto-card">
         <div className="content">
-          <figure>
-            <img src={this.props.data.image} alt="home item"/>
+          <figure className="resto-image">
+            <img src={this.props.data.image} alt="restaurants item"/>
           </figure>
-          <div className="text" style={{'justifyContent': 'center'}}>
+          <figure className="star-icon">
+            <img src="/images/star.png" alt="star icon" />
+            <p>{this.props.data.rating}</p>
+          </figure>
+          <div className="text">
             <h2>{this.props.data.name}</h2>
-            <p style={{'textAlign': 'center'}}>{this.props.data.type}</p>
+            <p>Res {this.props.data.reservation} for 2 people</p>
+            <figure className="map-icon">
+              <img src="/images/maps-and-flags.png" alt="map icon" />
+              <p>5 min from VIT</p>
+            </figure>
           </div>
         </div>
       </article>
