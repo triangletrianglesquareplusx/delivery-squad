@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    [
-      "./src/**/*.{js,jsx,ts,tsx}",
-    ],
-  ],
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     screens: {
       sm: "640px",
@@ -23,20 +19,18 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
-      
-        fontFamily: {
-          inter: ["Inter", "sans-serif"],
-        },
-        colors: {
-          regalBlue: "#9672FF",
-          primaryRed: "#FD6D61",
-          selectedBlue: "#693de7",
-          mutedGray: "#f4f1ff",
-          scaledDownWhite: "#f2f2f2",
-  
-        },
-      
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      colors: {
+        regalBlue: "#9672FF",
+        primaryRed: "#FD6D61",
+        selectedBlue: "#693de7",
+        mutedGray: "#f4f1ff",
+        scaledDownWhite: "#f2f2f2",
+
+      },
     },
   },
   plugins: [],
-}
+};

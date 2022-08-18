@@ -1,7 +1,7 @@
 import HeroSection from "../Components/HeroSection/HeroSection";
 import TrendingSection from "../Components/TrendingSection/TrendingSection";
 import NearbySection from "../Components/NearbySection/NearbySection";
-import HackatonsSection from "../Components/HackatonSections/HackatonsSection";
+import HackatonSection from "../Components/HackatonSection/HackatonSection";
 import GymnasiumSection from "../Components/GymnasiumSection/GymnasiumSection";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <HeroSection />
       <TrendingSection />
       <NearbySection />
-      <HackatonsSection />
+      <HackatonSection />
       <GymnasiumSection />
 
       

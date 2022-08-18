@@ -39,14 +39,14 @@ export default function HeroSection() {
       <div className={`hidden md:block md:w-5/12 lg:w-6/12`}>
         {/*This is where the four images will be */}
         <div className={`flex flex-row justify-between gap-4`}>
-          <ProductCard
+          <HeroCard
             className={"w-6/12"}
             alt={"rih"}
             src={
               "https://static.independent.co.uk/2022/05/19/21/People_Rihanna_ASAP_Rocky_25326.jpg?quality=50&width=640&auto=webp"
             }
           />
-          <ProductCard
+          <HeroCard
             className={"w-4/12"}
             alt={"building"}
             src={
