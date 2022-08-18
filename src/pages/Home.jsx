@@ -1,8 +1,8 @@
-import HeroSection from "../components/HeroSection";
-import TrendingSection from "../components/TrendingSection";
-import NearbySection from "../components/NearbySection";
-import HackatonsSection from "../components/HackatonsSection";
-import GymnasiumSection from "../components/GymnasiumSection";
+import HeroSection from "../Components/HeroSection/HeroSection";
+import TrendingSection from "../Components/TrendingSection/TrendingSection";
+import NearbySection from "../Components/NearbySection/NearbySection";
+import HackatonsSection from "../Components/HackatonSections/HackatonsSection";
+import GymnasiumSection from "../Components/GymnasiumSection/GymnasiumSection";
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import ControlButton from "../utilities/ControlButton";
-import InfoCard from "../utilities/InfoCard";
+import ControlButton from "../../Utilities/ControlButton";
+import InfoCard from "./InfoCard";
 import { GiForkKnifeSpoon } from "react-icons/gi";
 import { FaVectorSquare } from "react-icons/fa";
 import { TbBarbell } from "react-icons/tb";

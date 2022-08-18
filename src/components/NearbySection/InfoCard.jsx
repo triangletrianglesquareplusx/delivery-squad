@@ -1,7 +1,8 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 
-import ControlButton from "./ControlButton";
+import ControlButton from "../../Utilities/ControlButton";
+
 function InfoCard({ children, title }) {
   return (
     <div className="flex flex-col gap-2">

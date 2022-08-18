@@ -1,5 +1,5 @@
 import React from "react";
-import HackatonCard from "../utilities/HackatonCard";
+import HackatonCard from "./HackatonCard";
 
 function HackatonsSection() {
   return (

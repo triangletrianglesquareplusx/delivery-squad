@@ -1,7 +1,7 @@
 import React from "react";
-import ExpandedProductCard from "../utilities/ExpandedProductCard";
-import ControlButton from "../utilities/ControlButton";
-import vibe1 from '../images/vibe1.jpg'
+import ExpandedProductCard from "./ExpandedProductCard";
+import ControlButton from "../../Utilities/ControlButton";
+import vibe1 from '../../Assets/vibe1.jpg'
 function TrendingSection() {
   return (
     <div className="flex flex-col items-center gap-10 p-3">

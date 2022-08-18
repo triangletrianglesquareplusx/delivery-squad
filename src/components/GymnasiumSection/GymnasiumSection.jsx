@@ -1,6 +1,6 @@
 import React from "react";
-import ControlButton from "../utilities/ControlButton";
-import GymnasiumCard from "../utilities/GymnasiumCard";
+import ControlButton from "../../Utilities/ControlButton";
+import GymnasiumCard from "./GymnasiumCard";
 
 function GymnasiumSection() {
   return (

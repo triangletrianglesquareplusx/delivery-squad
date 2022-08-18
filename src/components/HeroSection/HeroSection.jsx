@@ -1,6 +1,6 @@
-import ControlButton from "../utilities/ControlButton";
+import ControlButton from "../../Utilities/ControlButton";
 import { IoLogoGooglePlaystore } from "react-icons/io5";
-import ProductCard from "../utilities/ProductCard";
+import ProductCard from "./ProductCard";
 
 export default function HeroSection() {
   return (

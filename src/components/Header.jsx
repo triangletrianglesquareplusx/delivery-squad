@@ -1,4 +1,4 @@
-import ControlButton from "../utilities/ControlButton";
+import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 

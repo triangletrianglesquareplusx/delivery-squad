@@ -1,5 +1,5 @@
 import React from 'react'
-import ControlButton from './ControlButton'
+import ControlButton from '../../Utilities/ControlButton'
 
 function ExpandedProductCard({className, src}) {
   return (
