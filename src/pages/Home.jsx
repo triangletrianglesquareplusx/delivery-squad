@@ -4,7 +4,6 @@ import NearbySection from "../components/NearbySection";
 import HackatonsSection from "../components/HackatonsSection";
 import GymnasiumSection from "../components/GymnasiumSection";
 
-
 export default function Home() {
   return (
     <div className="font-inter">

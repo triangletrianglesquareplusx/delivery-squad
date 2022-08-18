@@ -23,7 +23,7 @@ function TrendingSection() {
           }
         />
 
-<ExpandedProductCard
+        <ExpandedProductCard
           className="absolute z-20 w-8/12 overflow-hidden bg-gray-200 rounded-lg shadow-md bottom-10 right-50 md:w-4/12 lg:w-3/12"
           src={
             "https://i1.actualno.com/actualno_2013/upload/news/2022/06/01/0274624001654087691_1764664_920x708.jpg"
