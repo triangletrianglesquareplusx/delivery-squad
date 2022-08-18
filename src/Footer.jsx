@@ -1,8 +1,6 @@
 import React from 'react'
 import {AiFillHeart} from 'react-icons/ai'
-
-import ControlButton from '../Utilities/ControlButton'
-
+import ControlButton from './utilities/ControlButton'
 import {IoLogoGooglePlaystore} from 'react-icons/io5'
 
 function Footer() {
