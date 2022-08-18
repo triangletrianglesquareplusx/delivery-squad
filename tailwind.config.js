@@ -21,7 +21,7 @@ module.exports = {
     extend: {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
-        titlefont: ['Poppins'],
+        titlefont: ["Poppins"],
       },
       colors: {
         regalBlue: "#9672FF",
@@ -35,4 +35,3 @@ module.exports = {
   },
   plugins: [],
 };
-
