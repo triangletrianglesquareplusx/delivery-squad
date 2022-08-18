@@ -1,4 +1,4 @@
-import { articles } from "../Data/articles";
+import { articles } from "../../Data/articles";
 import { Link } from "react-router-dom";
 
 export default function ArticlesLoad() {    
