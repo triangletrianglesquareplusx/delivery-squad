@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import arrowResto from '../../Assets/upwards-arrow-resto.png';
 
 function BacktoTopButton() {
   const [BackToTopButton, setBackToTopButton] = useState(false);
@@ -21,13 +22,13 @@ function BacktoTopButton() {
       behavior: "smooth"
     });
   };
-  
+
   return (  
-    <div className="backtop-container">
-        <button className="top-icon" onClick={scrollToTop}>
-            <img src="/images/chevron-upwards-arrow.png" alt="back to top icon" />
+    <div className="flex flex-row items-center backtop-container">
+        <button className="top-icon pointer" onClick={scrollToTop}>
+            <img src={arrowResto} alt="back to top icon" />
         </button>
-        <p>Back to Top</p>
+        <p className="h-8 not-italic font-semibold text-red-500">Back to Top</p>
     </div>
   )
 }
