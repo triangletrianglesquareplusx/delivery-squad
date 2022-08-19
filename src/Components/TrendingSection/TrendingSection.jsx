@@ -4,7 +4,7 @@ import ControlButton from "../../Utilities/ControlButton";
 import vibe1 from '../../Assets/vibe1.jpg'
 function TrendingSection() {
   return (
-    <div className="flex flex-col items-center gap-10 p-3">
+    <div className="flex flex-col items-center p-3 gap-14">
       <ControlButton
         name="Trending"
         className="w-2/12 px-2 py-2 font-bold border-b-4 md:w-1/12 border-b-primaryRed"
@@ -31,7 +31,7 @@ function TrendingSection() {
         />
         
         
-        <div className="z-10 w-full h-full overflow-hidden rounded-md">
+        <div className="z-10 w-full h-full overflow-hidden rounded-lg shadow-lg">
           <img src={vibe1} alt="a cool background layer" className="object-fill"/>
         </div>
       </section>
