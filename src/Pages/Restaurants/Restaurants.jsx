@@ -17,7 +17,7 @@ function Restaurants() {
 
   return (
       <>
-        <div className="flex flex-wrap items-center justify-between w-4/5 restaurants-container">
+        <div className="flex flex-wrap items-center justify-center w-10/12 restaurants-container">
             {RestaurantCards.map((card) => 
             <RestaurantCard data={card} key={card.id} />
             )}

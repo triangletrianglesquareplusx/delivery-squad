@@ -8,7 +8,7 @@ export default function Searchbar() {
         <input 
           type="text" 
           placeholder="Search Restaurants"
-          className="flex-none flex-grow-0 order-1 not-italic font-medium text-center text-gray-500 bg-gray-200 cursor-pointer"
+          className="flex-none flex-grow-0 order-1 not-italic font-medium text-center text-gray-500 bg-gray-200 outline-none cursor-pointer"
           // value={search} 
           // onChange={handleSearchChange}
           />
