@@ -16,7 +16,7 @@ export default function HeroSection() {
               Navigate to the
             </h1>
             <h1 className={`text-2xl sm:text-3xl md:text-5xl font-bold`}>
-              <span className={`text-primaryRed`}>Atlas</span> for VIT
+              <span className={`text-primaryRed text-2xl sm:text-3xl md:text-5xl font-bold`}>Atlas</span> for VIT
             </h1>
           </div>
 

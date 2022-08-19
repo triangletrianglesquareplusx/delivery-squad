@@ -1,4 +1,4 @@
-import image from "../images/app-dev.jpg"
+import image from "../Assets/app-dev.jpg"
 
 export const articles = [
     {

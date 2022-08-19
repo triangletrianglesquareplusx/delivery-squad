@@ -9,28 +9,20 @@ import Articles from './Pages/Articles';
 import SingleArticle from './Pages/SingleArticle';
 import Header from './Components/Header'
 import Footer from './Components/Footer'
+import Home from './Pages/Home'
 
-function App() {
+export default function App() {
   return (
     <>
+          <Header/>
           <Routes>
-              <Route path="/" element={<Layout/>}>
-                  <Route index />
-                  <Route path="/articles" element={<Articles />}/>
-                  <Route path="/articles/:slug" element={<SingleArticle/>} />
-              </Route>        
+            <Route path="/" element={<Home/>}/>
+            
+            
           </Routes>
+          
+          <Footer/>
     </>
-    
-)
+  );
 }
 
-function Layout() {
-  return(
-      <div className="flex flex-wrap min-h-screen">       
-        <section className="w-full">    
-            <Outlet />
-        </section>
-      </div>
-  )
-}
