@@ -1,7 +1,7 @@
 import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
-
+import {Link} from 'react-router-dom'
 export default function Header() {
   return (
     <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
@@ -12,18 +12,24 @@ export default function Header() {
         <p>Atlas</p>
       </div>
       <div className={`flex`}>
-        <ControlButton
-          name={"Trending"}
-          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-        />
-        <ControlButton
-          name={"Resources"}
-          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-        />
-        <ControlButton
-          name={"Nearby"}
-          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-        />
+        <Link to="/">
+          <ControlButton
+            name={"Trending"}
+            className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+          />
+        </Link>
+        <Link to="/articles">
+          <ControlButton
+            name={"Resources"}
+            className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+          />
+        </Link>
+        <Link to="/restaurants">
+          <ControlButton
+            name={"Nearby"}
+            className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+          />
+        </Link>
         <ControlButton
           name={"Hackatons"}
           className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
