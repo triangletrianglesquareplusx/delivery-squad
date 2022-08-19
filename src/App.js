@@ -7,6 +7,7 @@ import RestaurantsFullPage from './Pages/RestaurantsFullPage';
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Home from './Pages/Home'
+import Shopping from './Components/Shopping/Shopping'
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
             <Route path="/articles" element={<Articles/>}/>
             <Route path="/articles/:slug" element={<SingleArticle/>} />
             <Route path="/restaurants" element={<RestaurantsFullPage/>}/>
-            
+            <Route path="/shopping" element={<Shopping/>}/>
           </Routes>
           
           <Footer/>

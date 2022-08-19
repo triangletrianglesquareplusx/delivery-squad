@@ -1,6 +1,6 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
-
+import {Link} from 'react-router-dom'
 import ControlButton from "../../Utilities/ControlButton";
 
 function InfoCard({ children, title }) {
@@ -16,7 +16,9 @@ function InfoCard({ children, title }) {
           Lorem ipsum dolor sit amet consectetur adipisicing elit
         </p>
         <div className="flex items-center gap-1 text-sm text-primaryRed">
+          <Link to={`/${title.toLowerCase()}`}>
           <ControlButton name="Checkout" />
+          </Link>
           <BsArrowRight />
         </div>
       </div>

@@ -5,6 +5,7 @@ import HackatonSection from "../Components/HackatonSection/HackatonSection";
 import GymnasiumSection from "../Components/GymnasiumSection/GymnasiumSection";
 import OverViewSection from "../Components/OverViewSection/OverViewSection";
 
+
 export default function Home() {
   return (
     <div className="font-inter">

@@ -2,7 +2,7 @@ import { ShoppingFooter } from "./ShoppingFooter";
 import { ShoppingHeader } from "./Header/ShoppingHeader";
 import { ShoppingItem } from "./ShoppingItem/ShoppingItem";
 
-export function Shopping() {
+export default function Shopping() {
   const items = [
     "Item1",
     "Item2",
