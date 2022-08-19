@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/css/main.1bbfa8c9.css",
+    "main.js": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/js/main.fa21c83e.js",
+    "static/media/app-dev.jpg": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/media/app-dev.eaea4f8d5632735cadbc.jpg",
+    "static/media/vibe1.jpg": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/media/vibe1.960cb13f097385adc508.jpg",
+    "static/media/search-resto.png": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/media/search-resto.a27091ef0c45faf8a66e.png",
+    "index.html": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/index.html",
+    "main.1bbfa8c9.css.map": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/css/main.1bbfa8c9.css.map",
+    "main.fa21c83e.js.map": "/http//:triangletrianglesquareplusx.github.io/delivery-squad/static/js/main.fa21c83e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1bbfa8c9.css",
+    "static/js/main.fa21c83e.js"
+  ]
+}
