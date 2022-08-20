@@ -3,24 +3,24 @@ import React from 'react';
 function RestaurantCard(props) {
 
     return (
-      <article className="relative flex flex-row flex-wrap justify-center bg-gray-100 resto-card">
+      <article className="relative flex flex-row flex-wrap justify-center w-64 bg-gray-100 shadow-2xl rounded-2xl ml-9 mb-9 h-80 resto-card min-h-max">
         <div className="flex flex-col flex-wrap content">
-          <figure className="resto-image">
-            <img src={props.data.image} alt="restaurants item"/>
+          <figure className="w-64 rounded-2xl h-50 resto-image">
+            <img className="object-contain w-full h-auto rounded-t-2xl rounded-r-2xl" src={props.data.image} alt="restaurants item"/>
           </figure>
-          <figure className="absolute flex items-center bg-gray-100 star-icon">
-            <img src={require("../../Assets/star-resto.png")} alt="star icon" />
+          <figure className="absolute flex items-center w-1/4 bg-gray-100 rounded-lg star-icon top-5 right-3 justify-evenly">
+            <img className="w-4 h-4" src={require("../../Assets/star-resto.png")} alt="star icon" />
             <p>{props.data.rating}</p>
           </figure>
-          <div className="flex flex-col text">
+          <div className="flex flex-col mt-2 ml-4 text">
             <h2 className="font-medium resto-name">{props.data.name}</h2>
             <p>Res {props.data.reservation} for 2 people</p>
-            <figure className="flex flex-row map-icon">
-              <img src={require("../../Assets/map-resto.png")} alt="map icon" />
+            <figure className="flex flex-row mt-2 map-icon">
+              <img className="w-4 h-4" src={require("../../Assets/map-resto.png")} alt="map icon" />
               <p>5 min from VIT</p>
             </figure>
           </div>
-          <button className="flex flex-col items-center text-purple-700 explore-button">Explore</button>
+          <button className="flex flex-col items-center w-20 p-1 mt-2 ml-4 text-purple-700 border-2 border-purple-700 border-solid rounded-lg explore-button">Explore</button>
         </div>
       </article>
     ) 
