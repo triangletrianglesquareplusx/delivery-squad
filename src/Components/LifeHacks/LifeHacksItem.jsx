@@ -5,8 +5,8 @@ export default function LifeHacksItem(props) {
         <p className="m-0">{props.item.number}</p>
       </div>
       <div className="text-left">
-        <h3 className="m-0 font-bold">{props.item.title}</h3>
-        <p className="m-0">{props.item.description}</p>
+        <h3 className="m-0 font-bold text-xl">{props.item.title}</h3>
+        <p className="m-0 text-lg">{props.item.description}</p>
       </div>
     </div>
   );
