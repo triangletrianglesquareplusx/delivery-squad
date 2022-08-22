@@ -1,10 +1,11 @@
 import React from 'react';
+import searchIcon from '../../Assets/search-resto.png';
 
 export default function Searchbar() {
   return (
     <div className="flex items-center justify-center mt-6 search-container">
       <div className="flex items-center p-3 bg-gray-200 rounded-lg h-9 w-96 searchbar">
-        <img src={require("../../Assets/search-resto.png")} alt="search icon" className="w-4 h-4 search-icon" />
+        <img src={searchIcon} alt="search icon" className="w-4 h-4 search-icon" />
         <input 
           type="text" 
           placeholder="Search Restaurants"

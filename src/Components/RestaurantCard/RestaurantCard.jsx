@@ -1,4 +1,6 @@
 import React from 'react';
+import starIcon from '../../Assets/star-resto.png';
+import mapIcon from '../../Assets/map-resto.png';
 
 function RestaurantCard(props) {
 
@@ -9,14 +11,14 @@ function RestaurantCard(props) {
             <img className="object-contain w-full h-auto rounded-t-2xl rounded-r-2xl" src={props.data.image} alt="restaurants item"/>
           </figure>
           <figure className="absolute flex items-center w-1/4 bg-gray-100 rounded-lg star-icon top-5 right-3 justify-evenly">
-            <img className="w-4 h-4" src={require("../../Assets/star-resto.png")} alt="star icon" />
+            <img className="w-4 h-4" src={starIcon} alt="star icon" />
             <p>{props.data.rating}</p>
           </figure>
           <div className="flex flex-col mt-2 ml-4 text">
             <h2 className="font-medium resto-name">{props.data.name}</h2>
             <p>Res {props.data.reservation} for 2 people</p>
             <figure className="flex flex-row mt-2 map-icon">
-              <img className="w-4 h-4" src={require("../../Assets/map-resto.png")} alt="map icon" />
+              <img className="w-4 h-4" src={mapIcon} alt="map icon" />
               <p>5 min from VIT</p>
             </figure>
           </div>

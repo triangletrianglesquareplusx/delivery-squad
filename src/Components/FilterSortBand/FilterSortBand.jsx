@@ -1,11 +1,13 @@
 import React from 'react';
+import filterIcon from '../../Assets/filter-resto.png';
+import sortIcon from '../../Assets/sort-resto.png';
 
 function FilterSortBand() {
   return (
     <div className="flex flex-wrap items-center justify-center mt-7 filtersort-container">
       <div className="flex flex-wrap justify-start mr-16 bg-gray-200 rounded-lg shadow-xl h-9 filter-container w-72">
         <div className="flex flex-wrap items-center justify-center w-24 bg-purple-900 rounded-lg filterBy h-9">
-          <img src={require("../../Assets/filter-resto.png")} alt="filter icon" className="w-4 h-4 mr-1 filter-icon" />
+          <img src={filterIcon} alt="filter icon" className="w-4 h-4 mr-1 filter-icon" />
           <p className="text-base not-italic font-normal leading-5 text-white">Filter By</p>
         </div>
         <ul className="flex flex-wrap flex-auto justify-evenly">
@@ -26,7 +28,7 @@ function FilterSortBand() {
       
       <div className="flex flex-wrap justify-start bg-gray-200 rounded-lg shadow-xl sort-container w-80 h-9">
         <div className="flex flex-wrap items-center justify-center w-24 bg-purple-900 rounded-lg sortBy">
-          <img src={require("../../Assets/sort-resto.png")} alt="sort icon" className="w-4 h-4 mr-1 sort-icon" />
+          <img src={sortIcon} alt="sort icon" className="w-4 h-4 mr-1 sort-icon" />
           <p className="text-base not-italic font-normal leading-5 text-white">Sort By</p>
         </div>
         <div className="flex flex-wrap items-center flex-auto sort-categories justify-evenly">
