@@ -5,11 +5,20 @@
   padding: 0;
 }
 
-@media(min-width: 768px) {
-  
+@media (min-width: 768px) {
+  .restaurants-title::after {
+    content: "";
+    position: absolute;
+    width: 10vw;
+    top: 23%;
+    left: 45%;
+    border: 3px solid #fd6d61;
+    border-radius: 10px;
+  }
+
   .restaurants-title p {
-    font-family: 'Poppins';
-  }  
+    font-family: "Poppins";
+  }
 
   .searchbar {
     width: 30vw;
@@ -17,7 +26,7 @@
   }
 
   .searchbar input {
-    font-family: 'Inter';
+    font-family: "Inter";
     font-size: 1rem;
     line-height: 2vh;
     border: none;
@@ -33,7 +42,7 @@
     box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
     border-radius: 10px;
   }
-  
+
   .filter-container .filterBy {
     justify-content: space-evenly;
     box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
@@ -45,7 +54,7 @@
     box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
     border-radius: 10px;
   }
-  
+
   .sort-container .sortBy {
     justify-content: space-evenly;
     box-shadow: 0px 3.99276px 11.9783px rgba(105, 61, 231, 0.2);
@@ -69,7 +78,7 @@
     margin-left: 4.5vw;
     margin-bottom: 5vh;
     border-radius: 10%;
-    box-shadow: 8px 8px 28px 1px rgba(79,79,79,0.55);
+    box-shadow: 8px 8px 28px 1px rgba(79, 79, 79, 0.55);
   }
 
   .resto-card .content .resto-image {
@@ -78,13 +87,13 @@
     /* border: 1px solid black; */
     border-radius: 10%;
   }
-  
+
   .resto-card .content .resto-image img {
     width: 100%;
     height: auto;
     border-top-left-radius: 10%;
     border-top-right-radius: 10%;
-    object-fit: contain;  
+    object-fit: contain;
   }
 
   .resto-card .content .text {
@@ -102,7 +111,7 @@
     padding: 0.6vh;
     margin-left: 2vw;
     margin-top: 1vh;
-    border: 1px solid #693DE7;
+    border: 1px solid #693de7;
     border-radius: 10px;
   }
 
@@ -115,22 +124,22 @@
   .backtop-container button {
     border: none;
     margin-right: 1vw;
-  }  
+  }
 }
 
 .restaurants-title h1 {
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .restaurants-title::after {
-  content: '';
-  position: absolute; 
+  content: "";
+  position: absolute;
   width: 10vw;
   top: 23%;
   left: 45%;
-  border: 3px solid #FD6D61; 
+  border: 3px solid #fd6d61;
   border-radius: 10px;
-} 
+}
 
 .searchbar .search-icon {
   width: 2.5vh;
@@ -143,7 +152,7 @@
 }
 
 .filter-container .filterBy p {
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .sort-container .sortBy .sort-icon {
@@ -152,7 +161,7 @@
 }
 
 .sort-container .sortBy p {
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 .sort-container .sort-categories button {
@@ -180,13 +189,13 @@
   height: 2.5vh;
 }
 
-.backtop-container .top-icon img{
+.backtop-container .top-icon img {
   width: 3.5vh;
   height: 3.5vh;
 }
 
 .backtop-container p {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-size: 1rem;
   line-height: 4vh;
 }

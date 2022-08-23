@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import topArrow from "../../Assets/upwards-arrow-faq.png";
+import topArrow from "../../Assets/upwards-arrow-resto.png";
 
 function BacktoTopButton() {
   const [BackToTopButton, setBackToTopButton] = useState(false);

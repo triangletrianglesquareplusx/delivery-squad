@@ -20,9 +20,9 @@ export default function App() {
             <Route path="/restaurants" element={<RestaurantsFullPage/>}/>
             <Route path="/shopping" element={<Shopping/>}/>
           </Routes>
-          
           <Footer/>
-    </>
+     </>
   );
 }
+
 
