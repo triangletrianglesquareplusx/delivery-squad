@@ -1,6 +1,6 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
-import arrowResto from '../../Assets/upwards-arrow-resto.png';
+import React from "react";
+import { useEffect, useState } from "react";
+import topArrow from "../../Assets/upwards-arrow-faq.png";
 
 function BacktoTopButton() {
   const [BackToTopButton, setBackToTopButton] = useState(false);
@@ -12,25 +12,27 @@ function BacktoTopButton() {
       } else {
         setBackToTopButton(false);
       }
-    })
+    });
   }, []);
 
   const scrollToTop = (e) => {
     e.preventDefault();
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
 
-  return (  
-    <div className="flex flex-row items-center backtop-container">
-        <button className="top-icon pointer" onClick={scrollToTop}>
-            <img src={arrowResto} alt="back to top icon" />
-        </button>
-        <p className="h-8 not-italic font-semibold text-red-500">Back to Top</p>
+  return (
+    <div className="flex flex-row items-center justify-end mb-9 mr-28 backtop-container">
+      <button className="mr-2 top-icon pointer" onClick={scrollToTop}>
+        <img className="w-6 h-6" src={topArrow} alt="back to top icon" />
+      </button>
+      <p className="h-6 text-sm not-italic font-medium text-red-500">
+        Back to Top
+      </p>
     </div>
-  )
+  );
 }
 
-export default BacktoTopButton
+export default BacktoTopButton;
