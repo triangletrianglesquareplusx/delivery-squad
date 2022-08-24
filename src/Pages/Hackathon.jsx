@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
-import ReverseArticle from "../Components/ReverseArticle.jsx";
-import Article from "../Components/Article.jsx";
+import ReverseArticle from "../Components/HackathonArticles/ReverseArticle.jsx";
+import Article from "../Components/HackathonArticles/Article.jsx";
 import BackToTop from "../Utilities/BackToTop.jsx";
 
 function Hackathon() {
@@ -25,9 +25,8 @@ function Hackathon() {
       <ReverseArticle />
       <Article />
       <ReverseArticle />
-      <div className=" mr-5 xl:mr-40">
-        <BackToTop />
-      </div>
+
+      <BackToTop />
     </div>
   );
 }

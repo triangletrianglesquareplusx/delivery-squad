@@ -1,5 +1,5 @@
 import React from "react";
-import blog from "../Assets/image.png";
+import blog from "../../Assets/hackathon-article.png";
 
 function ReverseArticle() {
   return (
