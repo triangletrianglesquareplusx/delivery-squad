@@ -2,9 +2,9 @@ import React from "react";
 import "../index.css";
 import ReverseArticle from "../Components/ReverseArticle.jsx";
 import Article from "../Components/Article.jsx";
-import ToTopButton from "../Components/ToTopButton.jsx";
+import BackToTop from "../Utilities/BackToTop.jsx";
 
-function Body() {
+function Hackathon() {
   return (
     <div className=" bg-backWhite  h-full w-screen pt-20 pb-64 ">
       <h1 className=" font-Inter font-semibold text-4xl text-black w-1/1 pb-4">
@@ -25,9 +25,11 @@ function Body() {
       <ReverseArticle />
       <Article />
       <ReverseArticle />
-      <ToTopButton />
+      <div className=" mr-5 xl:mr-40">
+        <BackToTop />
+      </div>
     </div>
   );
 }
 
-export default Body;
+export default Hackathon;

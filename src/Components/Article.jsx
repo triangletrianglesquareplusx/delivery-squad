@@ -1,5 +1,5 @@
 import React from "react";
-import blog from "../Resources/image.png";
+import blog from "../Assets/image.png";
 
 function Article() {
   return (

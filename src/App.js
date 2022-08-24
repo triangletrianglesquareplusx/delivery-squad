@@ -1,11 +1,11 @@
-import Body from "./Pages/Body.jsx";
+import Hackathon from "./Pages/Hackathon";
 import "./App.css";
 import "./index.css";
 
 function App() {
   return (
     <div className="App">
-      <Body/>
+      <Hackathon/>
     </div>
   );
 }
