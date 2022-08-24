@@ -9,6 +9,7 @@ import Footer from "./Components/Footer";
 import Home from "./Pages/Home";
 import Shopping from "./Components/Shopping/Shopping";
 import FAQFullPage from "./Pages/FAQFullPage";
+import LoginPage from "./Pages/LoginPage";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/restaurants" element={<RestaurantsFullPage />} />
         <Route path="/shopping" element={<Shopping />} />
         <Route path="/faq" element={<FAQFullPage />} />
+        <Route path="/temp-login" element={<LoginPage />} />
       </Routes>
       <Footer />
     </>
