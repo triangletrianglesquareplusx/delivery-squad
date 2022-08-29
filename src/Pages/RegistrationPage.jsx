@@ -6,6 +6,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { ImEnter } from "react-icons/im";
 
 function RegistrationPage() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -13,7 +15,15 @@ function RegistrationPage() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    createUserWithEmailAndPassword(
+      auth,
+      data.emailRegister,
+      data.passwordRegister
+    )
+      .then((auth) => navigate("/home"))
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -33,14 +43,22 @@ function RegistrationPage() {
           <p className="text-sm text-center">Email address</p>
           <div className="flex flex-col w-9/12">
             <input
-              {...register("email", { required: true })}
+              {...register("emailRegister", {
+                required: {
+                  value: true,
+                  message: "This field is mandatory!",
+                },
+              })}
               className="p-2 bg-blue-200 rounded-lg outline-none"
             />
+            <p className="text-center text-red-600">
+              {errors.emailRegister?.message}
+            </p>
           </div>
           <p className="text-sm text-center">Password</p>
           <div className="flex flex-col w-9/12 gap-2">
             <input
-              {...register("passwordRequired", {
+              {...register("passwordRegister", {
                 required: true,
                 minLength: {
                   value: 10,
@@ -53,7 +71,9 @@ function RegistrationPage() {
               })}
               className="p-2 bg-blue-200 rounded-lg outline-none"
             />
-            <p className="text-red-600 ">{errors.passwordRequired?.message}</p>
+            <p className="text-center text-red-600">
+              {errors.passwordRegister?.message}
+            </p>
           </div>
           <input type="submit" value="Register" />
         </form>
