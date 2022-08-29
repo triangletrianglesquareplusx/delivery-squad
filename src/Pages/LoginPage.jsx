@@ -1,16 +1,25 @@
 import React from "react";
-import ControlButton from "../Utilities/ControlButton";
 import { HiLightBulb } from "react-icons/hi";
 import { useForm } from "react-hook-form";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import auth from "../Firebase/firebase-config";
 
 function LoginPage() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    signInWithEmailAndPassword(auth, data.email, data.passwordRequired)
+      .then((auth) => navigate("/admin"))
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="flex items-start justify-center h-screen m-10">
@@ -21,8 +30,8 @@ function LoginPage() {
         <div className="flex justify-center gap-3 text-regalBlue">
           <HiLightBulb />
           <p className="text-sm text-black">
-            Speak <span className="text-sm text-regalBlue">'friend'</span> and
-            enter.
+            Welcome back <span className="text-sm text-regalBlue">friend</span>{" "}
+            - enter.
           </p>
         </div>
         <p className="text-sm text-center">Email address</p>
@@ -35,18 +44,12 @@ function LoginPage() {
         <p className="text-sm text-center">Password</p>
         <div className="flex flex-col w-9/12 gap-2">
           <input
-            {...register("passwordRequired", {
-              required: true,
-              minLength: {
-                value: 10,
-                message: "You need a 10 digit pass minimum!",
-              },
-            })}
+            {...register("passwordRequired")}
             className="p-2 bg-blue-200 rounded-lg outline-none"
           />
           <p className="text-red-600 ">{errors.passwordRequired?.message}</p>
         </div>
-        <input type="submit" />
+        <input type="submit" value="Login" />
       </form>
     </div>
   );

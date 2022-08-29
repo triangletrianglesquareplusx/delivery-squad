@@ -10,19 +10,22 @@ import Home from "./Pages/Home";
 import Shopping from "./Components/Shopping/Shopping";
 import FAQFullPage from "./Pages/FAQFullPage";
 import LoginPage from "./Pages/LoginPage";
+import RegistrationPage from "./Pages/RegistrationPage";
+import AdminPage from "./Pages/AdminPage";
 
 export default function App() {
   return (
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        {/*<Route path="/" element={<Home />} />*/}
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:slug" element={<SingleArticle />} />
         <Route path="/restaurants" element={<RestaurantsFullPage />} />
         <Route path="/shopping" element={<Shopping />} />
         <Route path="/faq" element={<FAQFullPage />} />
-        <Route path="/temp-login" element={<LoginPage />} />
       </Routes>
       <Footer />
     </>
