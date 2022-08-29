@@ -2,7 +2,7 @@ import React from "react";
 import { HiLightBulb } from "react-icons/hi";
 import { useForm } from "react-hook-form";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import auth from "../Firebase/firebase-config";
 
 function LoginPage() {
@@ -44,11 +44,15 @@ function LoginPage() {
         <p className="text-sm text-center">Password</p>
         <div className="flex flex-col w-9/12 gap-2">
           <input
-            {...register("passwordRequired")}
+            {...register("passwordRequired", { required: true })}
             className="p-2 bg-blue-200 rounded-lg outline-none"
           />
           <p className="text-red-600 ">{errors.passwordRequired?.message}</p>
         </div>
+        <Link to="/register">
+          <p className="text-xs text-regalBlue">Not a friend yet? Register!</p>
+        </Link>
+
         <input type="submit" value="Login" />
       </form>
     </div>
