@@ -1,9 +1,9 @@
 import React from 'react';
-import RestaurantCard from '../../Components/RestaurantCard/RestaurantCard';
-import RestaurantCards from '../../Data/RestaurantData';
-import BacktoTopButton from '../../Utilities/BacktoTopButton/BacktoTopButton';
-import filterIcon from '../../Assets/filter-resto.png';
-import sortIcon from '../../Assets/sort-resto.png';
+import RestaurantCard from '../Components/RestaurantCard/RestaurantCard';
+import RestaurantCards from '../Data/RestaurantData';
+import BacktoTopButton from '../Utilities/BacktoTopButton/BacktoTopButton';
+import filterIcon from '../Assets/filter-resto.png';
+import sortIcon from '../Assets/sort-resto.png';
 import { useState } from 'react';
 
 function Restaurants() {
