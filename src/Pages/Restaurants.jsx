@@ -9,6 +9,7 @@ import { useState } from 'react';
 function Restaurants() {
 
   const [cards, setCards] = useState(RestaurantCards);
+  const [sorting, sortCards] = useState("");
 
   const filterType = (e) => {
     const filterResult = RestaurantCards.filter(item => {
@@ -16,6 +17,15 @@ function Restaurants() {
     });
     
     setCards(filterResult);
+  }
+
+  const sortCategory = (e) => {
+    const targetClicked = e.target.value;
+      const sortResult = RestaurantCards.sort((a, b) => {
+        return a[targetClicked] - b[targetClicked];
+    });
+
+    sortCards(sortResult);
   }
   
   return (
@@ -48,9 +58,9 @@ function Restaurants() {
               <p className="text-base not-italic font-normal leading-5 text-white">Sort By</p>
             </div>
             <div className="flex flex-wrap items-center flex-auto sort-categories justify-evenly">
-              <button className="text-sm font-semibold">Ratings</button>
-              <button className="text-sm font-semibold">Cost</button>
-              <button className="text-sm font-semibold">Distance</button>
+              <button onClick={sortCategory} className="text-sm font-semibold" value="rating">Ratings</button>
+              <button onClick={sortCategory} className="text-sm font-semibold">Cost</button>
+              <button onClick={sortCategory} className="text-sm font-semibold">Distance</button>
             </div>
           </div>
         </div>
@@ -64,4 +74,4 @@ function Restaurants() {
   )
 }
 
-export default Restaurants
+export default Restaurants;
