@@ -12,6 +12,7 @@ import FAQFullPage from "./Pages/FAQFullPage";
 import LoginPage from "./Pages/LoginPage";
 import RegistrationPage from "./Pages/RegistrationPage";
 import AdminPage from "./Pages/AdminPage";
+import LifeHacks from "./Pages/LifeHacks";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/restaurants" element={<RestaurantsFullPage />} />
         <Route path="/shopping" element={<Shopping />} />
         <Route path="/faq" element={<FAQFullPage />} />
+        <Route path="/lifehacks" element={<LifeHacks />} />
       </Routes>
       <Footer />
     </>
