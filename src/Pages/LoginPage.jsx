@@ -6,9 +6,11 @@ import { useNavigate, Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import auth from "../Firebase/firebase-config";
+import { useDispatch } from "react-redux";
 
 function LoginPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
     email: yup.string().email().required(),
