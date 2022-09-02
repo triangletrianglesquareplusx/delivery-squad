@@ -2,15 +2,18 @@ import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
-      <div
-        className={`font-inter text-regalBlue text-3xl md:text-xl font-extrabold flex items-center gap-1`}
-      >
-        <MdLocationPin className={`text-primaryRed`} />
-        <p>Atlas</p>
-      </div>
+      <Link to="/home">
+        <div
+          className={`font-inter text-regalBlue text-3xl md:text-xl font-extrabold flex items-center gap-1`}
+        >
+          <MdLocationPin className={`text-primaryRed`} />
+          <p>Atlas</p>
+        </div>
+      </Link>
       <div className={`flex`}>
         <Link to="/">
           <ControlButton
