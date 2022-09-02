@@ -32,16 +32,18 @@ module.exports = {
         coral: '#fd6d61'
 
       },
-      
+
       borderRadius: {
         some: '40px'
       },
       boxShadow: {
         box: '0 0 24px 1px rgba(0,0,0,0.15)'
       },
-      
+      backgroundImage: {
+        grad: 'linear-gradient(100deg, rgba(105, 61, 231, 1) 50%, rgba(255, 255, 255, 1) 50%)'
+      }
     },
-    
+
   },
   plugins: [],
 };
