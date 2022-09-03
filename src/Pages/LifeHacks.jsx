@@ -2,39 +2,55 @@ import { useEffect, useState } from "react";
 import LifeHacksHeader from "../Components/LifeHacks/LifeHacksHeader";
 import LifeHacksItem from "../Components/LifeHacks/LifeHacksItem";
 import { lifeHacks } from "../Data/lifeHacksData";
+import { db } from "../Firebase/firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function LifeHacks() {
-  const array = [...lifeHacks];
   const [order, setOrder] = useState("");
   const [ordered, setOrdered] = useState([]);
+  const [data, setData] = useState([]);
 
-  const onTitleOrderChange = () => {
-    if (order === "aToZ") {
-      setOrder("zToA");
-      setOrdered(array.sort((a, b) => b.title.localeCompare(a.title)));
-    } else {
-      setOrder("aToZ");
-      setOrdered(array.sort((a, b) => a.title.localeCompare(b.title)));
-    }
-  };
-
-  const onDescriptionOrderChange = () => {
-    if (order === "aToZ") {
-      setOrder("zToA");
-      setOrdered(
-        array.sort((a, b) => b.description.localeCompare(a.description))
-      );
-    } else {
-      setOrder("aToZ");
-      setOrdered(
-        array.sort((a, b) => a.description.localeCompare(b.description))
-      );
-    }
-  };
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setOrdered(array);
+    const fetchData = async () => {
+      try {
+        const results = [];
+        const querySnapshot = await getDocs(collection(db, "lifehacks"));
+        querySnapshot.forEach((doc) => {
+          results.push({ id: doc.id, data: doc.data() });
+        });
+        setData(results);
+        setOrdered(data);
+        setIsLoading(false);
+      } catch (err) {
+        console.log("error", err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchData();
   }, []);
+
+  useEffect(() => {
+    if (data) {
+      setOrdered(data);
+    }
+  }, [data]);
+
+  const onOrderChange = (type) => {
+    if (order === "aToZ") {
+      setOrder("zToA");
+      setOrdered(
+        ordered.sort((a, b) => b.data[type].localeCompare(a.data[type]))
+      );
+    } else {
+      setOrder("aToZ");
+      setOrdered(
+        ordered.sort((a, b) => a.data[type].localeCompare(b.data[type]))
+      );
+    }
+  };
 
   return (
     <div className="lifeHacksContainer">
@@ -49,28 +65,27 @@ export default function LifeHacks() {
       <table>
         <thead>
           <tr>
-            <th onClick={onTitleOrderChange}>
-              Title <span>{order}</span>
-            </th>
-            <th onClick={onDescriptionOrderChange}>
-              Description <span>{order}</span>
-            </th>
+            <th onClick={() => onOrderChange("title")}>Title</th>
+            <th onClick={() => onOrderChange("description")}>Description</th>
             <th>Controls</th>
           </tr>
         </thead>
         <tbody>
-          {ordered.map((el) => {
-            return (
-              <tr key={el.id}>
-                <td>{el.title}</td>
-                <td>{el.description}</td>
-                <td>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
-            );
-          })}
+          {isLoading && <span>Loading</span>}
+          {!isLoading &&
+            data.length > 0 &&
+            data.map((el) => {
+              return (
+                <tr key={el.id}>
+                  <td>{el.data.title}</td>
+                  <td>{el.data.description}</td>
+                  <td>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </div>
