@@ -4,6 +4,7 @@ import LifeHacksItem from "../Components/LifeHacks/LifeHacksItem";
 import { lifeHacks } from "../Data/lifeHacksData";
 import { db } from "../Firebase/firebase-config";
 import { collection, getDocs } from "firebase/firestore";
+import { doc, deleteDoc } from "firebase/firestore";
 
 export default function LifeHacks() {
   const [order, setOrder] = useState("");
@@ -13,22 +14,6 @@ export default function LifeHacks() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const results = [];
-        const querySnapshot = await getDocs(collection(db, "lifehacks"));
-        querySnapshot.forEach((doc) => {
-          results.push({ id: doc.id, data: doc.data() });
-        });
-        setData(results);
-        setOrdered(data);
-        setIsLoading(false);
-      } catch (err) {
-        console.log("error", err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
     fetchData();
   }, []);
 
@@ -37,6 +22,23 @@ export default function LifeHacks() {
       setOrdered(data);
     }
   }, [data]);
+
+  const fetchData = async () => {
+    try {
+      const results = [];
+      const querySnapshot = await getDocs(collection(db, "lifehacks"));
+      querySnapshot.forEach((doc) => {
+        results.push({ id: doc.id, data: doc.data() });
+      });
+      setData(results);
+      setOrdered(data);
+      setIsLoading(false);
+    } catch (err) {
+      console.log("error", err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const onOrderChange = (type) => {
     if (order === "aToZ") {
@@ -50,6 +52,11 @@ export default function LifeHacks() {
         ordered.sort((a, b) => a.data[type].localeCompare(b.data[type]))
       );
     }
+  };
+
+  const onDeleteData = async (id) => {
+    await deleteDoc(doc(db, "lifehacks", id));
+    fetchData();
   };
 
   return (
@@ -81,7 +88,7 @@ export default function LifeHacks() {
                   <td>{el.data.description}</td>
                   <td>
                     <button>Edit</button>
-                    <button>Delete</button>
+                    <button onClick={() => onDeleteData(el.id)}>Delete</button>
                   </td>
                 </tr>
               );
