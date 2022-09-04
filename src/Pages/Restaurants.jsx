@@ -1,22 +1,34 @@
 import React from 'react';
 import RestaurantCard from '../Components/RestaurantCard/RestaurantCard';
-import RestaurantCards from '../Data/RestaurantData';
+// import RestaurantCards from '../Data/RestaurantData';
 import BacktoTopButton from '../Utilities/BacktoTopButton/BacktoTopButton';
 import filterIcon from '../Assets/filter-resto.png';
 import sortIcon from '../Assets/sort-resto.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { db } from '../Firebase/firebase-config';
+import { collection, getDocs } from 'firebase/firestore';
 
-function Restaurants() {
+function Restaurants(props) {
 
-  const [cards, setCards] = useState(RestaurantCards);
-
-  const filterType = (e) => {
-    const filterResult = RestaurantCards.filter(item => {
-      return item.type === e.target.value;
-    });
+  const [restaurants, setRestaurants] = useState([]);
+  const restaurantsCollectionRef = collection(db, "restaurants");
+  
+  useEffect(() => {
+    const getRestaurants = async () => {
+      const data = await getDocs(restaurantsCollectionRef);
+      setRestaurants(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+    };
     
-    setCards(filterResult);
-  }
+    getRestaurants();
+  }, []);
+
+  //   const filterType = (e) => {
+//     const filterResult = RestaurantCards.filter(item => {
+//       return item.type === e.target.value;
+//     });
+    
+//     setCards(filterResult);
+//   }
   
   return (
       <>
@@ -29,13 +41,13 @@ function Restaurants() {
             <ul className="flex flex-wrap flex-auto justify-evenly">
               <li>
                 <div className="flex items-center pl-3">
-                  <input onClick={filterType}  id="type-checkbox-list" type="checkbox" value="Restaurant" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                  <input id="type-checkbox-list" type="checkbox" value="Restaurant" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
                   <label htmlFor="type-checkbox-list" className="py-2 ml-2 text-sm font-semibold">Restaurant</label>
                 </div>
               </li>
               <li>
                 <div className="flex items-center pl-3">
-                  <input onClick={filterType} id="type-checkbox-list" type="checkbox" value="Bar" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
+                  <input id="type-checkbox-list" type="checkbox" value="Bar" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" />
                   <label htmlFor="type-checkbox-list" className="py-2 ml-2 text-sm font-semibold">Bar</label>
                 </div>
               </li>
@@ -55,9 +67,14 @@ function Restaurants() {
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-between w-4/5 ml-20 mt-14 restaurants-container">
-          {cards.map((card) => 
-          <RestaurantCard data={card} key={card.id} />
-          )}
+          {restaurants.map((resto) => (
+          <RestaurantCard 
+           key={resto.id}
+           name={resto.name}
+           rating={resto.rating}
+           reservation={resto.reservation}
+          />
+          ))}
         </div>
         <BacktoTopButton />
       </>
