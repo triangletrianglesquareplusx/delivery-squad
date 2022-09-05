@@ -2,14 +2,10 @@ import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
-import auth from "../Firebase/firebase-config";
-import { signOut, onAuthStateChanged } from "firebase/auth";
+//import auth from "../Firebase/firebase-config";
+import { signOut } from "firebase/auth";
 
 export default function Header() {
-  const handleSignOut = () => {
-    console.log("out");
-    signOut(auth);
-  };
   return (
     <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
       <Link to="/home">
@@ -51,16 +47,12 @@ export default function Header() {
         </Link>
 
         <div className="flex flex-col items-center justify-center px-3">
-          {auth.currentUser ? (
+          {/*auth.currentUser ? (
             <>
               <p className="text-xs text-regalBlue">
                 Hey there {auth.currentUser.email}
               </p>
-              <ControlButton
-                name="Logout"
-                className="hover:text-red-500"
-                onClick={handleSignOut}
-              />
+              <ControlButton name="Logout" className="hover:text-red-500" />
             </>
           ) : (
             <>
@@ -69,7 +61,7 @@ export default function Header() {
                 <ControlButton name="Login" className="hover:text-red-500" />
               </Link>
             </>
-          )}
+          )*/}
         </div>
 
         <ControlButton

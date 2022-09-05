@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import auth from "../Firebase/firebase-config";
+//import auth from "../Firebase/firebase-config";
 import { useDispatch } from "react-redux";
 
 function LoginPage() {
@@ -21,19 +21,18 @@ function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: yupResolver(schema),
-  });
+  } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = (data) => {
-    signInWithEmailAndPassword(auth, data.email, data.passwordRequired)
+    /*signInWithEmailAndPassword(auth, data.email, data.passwordRequired)
       .then((userCredentials) => {
         navigate("/admin");
         console.log(userCredentials.user.email);
       })
       .catch((error) => {
         console.log(error);
-      });
+      });*/
+    console.log("hey");
   };
 
   return (
