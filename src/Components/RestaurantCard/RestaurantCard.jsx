@@ -2,7 +2,7 @@ import React from 'react';
 import starIcon from '../../Assets/star-resto.png';
 import mapIcon from '../../Assets/map-resto.png';
 
-function RestaurantCard({name, rating, reservation, source}) {
+function RestaurantCard({name, rating, reservation, source, distance}) {
 
     return (
       <article className="relative flex flex-row flex-wrap justify-center w-64 bg-gray-100 shadow-2xl rounded-2xl ml-9 mb-9 h-80 resto-card min-h-max">
@@ -19,7 +19,7 @@ function RestaurantCard({name, rating, reservation, source}) {
             <p>Res {reservation} for 2 people</p>
             <figure className="flex flex-row mt-2 map-icon">
               <img className="w-4 h-4" src={mapIcon} alt="map icon" />
-              <p>5 min from VIT</p>
+              <p>{distance} min from VIT</p>
             </figure>
           </div>
           <button className="flex flex-col items-center w-20 p-1 mt-2 ml-4 text-purple-700 border-2 border-purple-700 border-solid rounded-lg explore-button">Explore</button>

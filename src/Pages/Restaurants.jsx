@@ -11,7 +11,33 @@ import { collection, getDocs } from 'firebase/firestore';
 function Restaurants(props) {
 
   const [restaurants, setRestaurants] = useState([]);
+  const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
   const restaurantsCollectionRef = collection(db, "restaurants");
+  
+  
+  const sortByRating = () => {
+    setSorted({ sorted: "rating", reversed: !sorted.reversed });
+    const restosCopy = [...restaurants];
+    restosCopy.sort((restoA, restoB) => {
+      if(sorted.reversed) {
+        return restoA.rating - restoB.rating;
+      }
+      return restoB.rating - restoA.rating;
+    });
+    setRestaurants(restosCopy);
+  };
+  
+  const sortByDistance = () => {
+    setSorted({ sorted: "distance", reversed: !sorted.reversed });
+    const restosCopy = [...restaurants];
+    restosCopy.sort((restoA, restoB) => {
+      if(sorted.reversed) {
+        return restoA.distance - restoB.distance;
+      }
+      return restoB.distance - restoA.distance;
+    });
+    setRestaurants(restosCopy);
+  };
   
   useEffect(() => {
     const getRestaurants = async () => {
@@ -21,24 +47,6 @@ function Restaurants(props) {
     
     getRestaurants();
   }, []);
-  
-
-  //   const filterType = (e) => {
-//     const filterResult = RestaurantCards.filter(item => {
-//       return item.type === e.target.value;
-//     });
-    
-//     setCards(filterResult);
-//   }
-  
-// const sortCategory = (e) => {
-//     const targetClicked = e.target.value;
-//       const sortResult = RestaurantCards.sort((a, b) => {
-//         return a[targetClicked] - b[targetClicked];
-//     });
-
-//     sortCards(sortResult);
-//   }
   
   return (
       <>
@@ -70,20 +78,22 @@ function Restaurants(props) {
               <p className="text-base not-italic font-normal leading-5 text-white">Sort By</p>
             </div>
             <div className="flex flex-wrap items-center flex-auto sort-categories justify-evenly">
-              <button className="text-sm font-semibold">Ratings</button>
+              <button onClick={sortByRating} className="text-sm font-semibold" value="rating">Ratings</button>
               <button className="text-sm font-semibold">Cost</button>
-              <button className="text-sm font-semibold">Distance</button>
+              <button onClick={sortByDistance} className="text-sm font-semibold" value="distance">Distance</button>
             </div>
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-between w-4/5 ml-20 mt-14 restaurants-container">
-          {restaurants.map((resto) => (
+          {restaurants  
+            .map((resto) => (
           <RestaurantCard 
            key={resto.id}
            name={resto.name}
            rating={resto.rating}
            reservation={resto.reservation}
            source={resto.imgUrl}
+           distance={resto.distance}
           />
           ))}
         </div>
