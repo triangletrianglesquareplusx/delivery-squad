@@ -2,13 +2,13 @@ import React from 'react';
 import starIcon from '../../Assets/star-resto.png';
 import mapIcon from '../../Assets/map-resto.png';
 
-function RestaurantCard({name, rating, reservation}) {
+function RestaurantCard({name, rating, reservation, source}) {
 
     return (
       <article className="relative flex flex-row flex-wrap justify-center w-64 bg-gray-100 shadow-2xl rounded-2xl ml-9 mb-9 h-80 resto-card min-h-max">
         <div className="flex flex-col flex-wrap content">
           <figure className="w-64 rounded-2xl h-50 resto-image">
-            {/* <img className="object-contain w-full h-auto rounded-t-2xl rounded-r-2xl" src={image} alt="restaurants item"/> */}
+            <img className="object-contain w-full h-auto rounded-t-2xl rounded-r-2xl" src={source} alt="restaurants item"/>
           </figure>
           <figure className="absolute flex items-center w-1/4 bg-gray-100 rounded-lg star-icon top-5 right-3 justify-evenly">
             <img className="w-4 h-4" src={starIcon} alt="star icon" />

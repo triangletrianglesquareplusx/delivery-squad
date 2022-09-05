@@ -1,12 +1,12 @@
 import React from 'react';
 import RestaurantCard from '../Components/RestaurantCard/RestaurantCard';
-// import RestaurantCards from '../Data/RestaurantData';
 import BacktoTopButton from '../Utilities/BacktoTopButton/BacktoTopButton';
 import filterIcon from '../Assets/filter-resto.png';
 import sortIcon from '../Assets/sort-resto.png';
 import { useState, useEffect } from 'react';
 import { db } from '../Firebase/firebase-config';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore'; 
+
 
 function Restaurants(props) {
 
@@ -21,6 +21,7 @@ function Restaurants(props) {
     
     getRestaurants();
   }, []);
+  
 
   //   const filterType = (e) => {
 //     const filterResult = RestaurantCards.filter(item => {
@@ -28,6 +29,15 @@ function Restaurants(props) {
 //     });
     
 //     setCards(filterResult);
+//   }
+  
+// const sortCategory = (e) => {
+//     const targetClicked = e.target.value;
+//       const sortResult = RestaurantCards.sort((a, b) => {
+//         return a[targetClicked] - b[targetClicked];
+//     });
+
+//     sortCards(sortResult);
 //   }
   
   return (
@@ -73,6 +83,7 @@ function Restaurants(props) {
            name={resto.name}
            rating={resto.rating}
            reservation={resto.reservation}
+           source={resto.imgUrl}
           />
           ))}
         </div>
