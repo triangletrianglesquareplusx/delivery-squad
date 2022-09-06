@@ -1,11 +1,24 @@
 import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
-import { Link } from "react-router-dom";
-//import auth from "../Firebase/firebase-config";
-import { signOut } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import useAuthStatus from "../Hooks/useAuthStatus";
+import { getAuth } from "firebase/auth";
 
 export default function Header() {
+  const { loggedIn, checkStatus } = useAuthStatus();
+  const auth = getAuth();
+  const navigate = useNavigate();
+  console.log(loggedIn);
+
+  const logOut = () => {
+    auth.signOut();
+    navigate("/");
+  };
+
+  const logIn = () => {
+    navigate("/home");
+  };
   return (
     <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
       <Link to="/home">
@@ -46,23 +59,11 @@ export default function Header() {
           />
         </Link>
 
-        <div className="flex flex-col items-center justify-center px-3">
-          {/*auth.currentUser ? (
-            <>
-              <p className="text-xs text-regalBlue">
-                Hey there {auth.currentUser.email}
-              </p>
-              <ControlButton name="Logout" className="hover:text-red-500" />
-            </>
-          ) : (
-            <>
-              <p className="text-xs text-regalBlue">No user</p>
-              <Link to="/login">
-                <ControlButton name="Login" className="hover:text-red-500" />
-              </Link>
-            </>
-          )*/}
-        </div>
+        <ControlButton
+          name={loggedIn ? "Logout" : "Log in"}
+          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+          onClick={loggedIn ? logOut : console.log("log in buddy")}
+        />
 
         <ControlButton
           name={"Download App"}

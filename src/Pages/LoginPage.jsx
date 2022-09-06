@@ -1,11 +1,10 @@
 import React from "react";
 import { HiLightBulb } from "react-icons/hi";
 import { useForm } from "react-hook-form";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-//import auth from "../Firebase/firebase-config";
 import { useDispatch } from "react-redux";
 
 function LoginPage() {
@@ -23,16 +22,20 @@ function LoginPage() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
-    /*signInWithEmailAndPassword(auth, data.email, data.passwordRequired)
-      .then((userCredentials) => {
+  const onSubmit = async (data) => {
+    try {
+      const auth = getAuth();
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.passwordRequired
+      );
+      if (userCredentials.user) {
         navigate("/admin");
-        console.log(userCredentials.user.email);
-      })
-      .catch((error) => {
-        console.log(error);
-      });*/
-    console.log("hey");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

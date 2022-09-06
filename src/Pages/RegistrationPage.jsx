@@ -1,4 +1,5 @@
 import React from "react";
+import ControlButton from "../Utilities/ControlButton";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -35,7 +36,6 @@ function RegistrationPage() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (data) => {
-    console.log(data.gender);
     try {
       const auth = getAuth();
       const userCredentials = await createUserWithEmailAndPassword(
@@ -47,6 +47,7 @@ function RegistrationPage() {
       const uid = userCredentials.user.uid;
       await setDoc(doc(db, "users", uid), {
         email: data.emailRegister,
+        displayName: data.displayName,
         timeStamp: userTimestamp,
         gender: data.gender,
       });
@@ -126,7 +127,13 @@ function RegistrationPage() {
               </div>
             </div>
           </div>
-
+          <div className="flex flex-col w-9/12 gap-2">
+            <label className="text-sm text-center">Choose Display Name</label>
+            <input
+              {...register("displayName")}
+              className="p-2 bg-blue-200 rounded-lg outline-none"
+            />
+          </div>
           <div className="flex flex-col w-9/12 gap-2">
             <label className="text-sm text-center">Password</label>
             <input
@@ -157,7 +164,7 @@ function RegistrationPage() {
               {errors.passwordRegisterConfirm?.message}
             </p>
           </div>
-          <input type="submit" value="Register" />
+          <ControlButton type="submit" name="Register" className="bg-red-500" />
         </form>
       </div>
     </div>
