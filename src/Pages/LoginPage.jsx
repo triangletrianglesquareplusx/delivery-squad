@@ -1,24 +1,39 @@
 import React from "react";
 import { HiLightBulb } from "react-icons/hi";
 import { useForm } from "react-hook-form";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
-import auth from "../Firebase/firebase-config";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 function LoginPage() {
   const navigate = useNavigate();
+
+  const schema = yup.object().shape({
+    email: yup.string().email().required(),
+    passwordRequired: yup.number().required(),
+  });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
-  const onSubmit = (data) => {
-    signInWithEmailAndPassword(auth, data.email, data.passwordRequired)
-      .then((auth) => navigate("/admin"))
-      .catch((error) => {
-        console.log(error);
-      });
+  const onSubmit = async (data) => {
+    try {
+      const auth = getAuth();
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.passwordRequired
+      );
+      if (userCredentials.user) {
+        navigate("/admin");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -37,9 +52,16 @@ function LoginPage() {
         <p className="text-sm text-center">Email address</p>
         <div className="flex flex-col w-9/12">
           <input
-            {...register("email", { required: true })}
+            {...register("email", {
+              required: {
+                message: "This field is mandatory!",
+              },
+            })}
             className="p-2 bg-blue-200 rounded-lg outline-none"
           />
+          {errors.email && (
+            <p className="text-red-500">{errors.email.message}</p>
+          )}
         </div>
         <p className="text-sm text-center">Password</p>
         <div className="flex flex-col w-9/12 gap-2">

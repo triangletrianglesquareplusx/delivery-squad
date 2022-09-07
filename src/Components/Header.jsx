@@ -1,16 +1,34 @@
 import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuthStatus from "../Hooks/useAuthStatus";
+import { getAuth } from "firebase/auth";
+
 export default function Header() {
+  //const { loggedIn, checkStatus } = useAuthStatus();
+  const auth = getAuth();
+  const navigate = useNavigate();
+  //console.log(loggedIn);
+
+  const logOut = () => {
+    auth.signOut();
+    navigate("/");
+  };
+
+  const logIn = () => {
+    navigate("/home");
+  };
   return (
     <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
-      <div
-        className={`font-inter text-regalBlue text-3xl md:text-xl font-extrabold flex items-center gap-1`}
-      >
-        <MdLocationPin className={`text-primaryRed`} />
-        <p>Atlas</p>
-      </div>
+      <Link to="/home">
+        <div
+          className={`font-inter text-regalBlue text-3xl md:text-xl font-extrabold flex items-center gap-1`}
+        >
+          <MdLocationPin className={`text-primaryRed`} />
+          <p>Atlas</p>
+        </div>
+      </Link>
       <div className={`flex`}>
         <Link to="/">
           <ControlButton
@@ -40,6 +58,13 @@ export default function Header() {
             className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
           />
         </Link>
+
+        {/*<ControlButton
+          name={loggedIn ? "Logout" : "Log in"}
+          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+          onClick={loggedIn ? logOut : console.log("log in buddy")}
+        />*/}
+
         <ControlButton
           name={"Download App"}
           className={`px-6 py-2 whitespace-no-wrap bg-primaryRed rounded-lg shadow-md text-white text-sm font-medium font-inter`}
