@@ -1,16 +1,28 @@
 import { getAuth, updateProfile } from "firebase/auth";
 import ControlButton from "../Utilities/ControlButton";
-import { updateDoc } from "firebase/firestore";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import { useForm } from "react-hook-form";
 
 function AdminPage() {
   const auth = getAuth();
   const { register, handleSubmit, setValue } = useForm();
-  setValue("displayName", "Bobby");
+  setValue("displayName", auth.currentUser.displayName);
 
-  const updateAllProfileFields = () => {
-    console.log("handled");
+  const updateAllRegisteredProfileFields = async (data) => {
+    try {
+      if (auth.currentUser.displayName !== data.displayName) {
+        await updateProfile(auth.currentUser, {
+          displayName: data.displayName,
+        });
+        const userRef = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(userRef, {
+          displayName: data.displayName,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -21,10 +33,10 @@ function AdminPage() {
           <span className="text-regalBlue">{auth.currentUser.email}</span>
         </p>
       </header>
-      <main>
+      <main className="my-4">
         <form
           className="flex flex-col gap-2"
-          onSubmit={handleSubmit(updateAllProfileFields)}
+          onSubmit={handleSubmit(updateAllRegisteredProfileFields)}
         >
           <label>Current display name</label>
           <input

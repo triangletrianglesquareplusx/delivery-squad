@@ -6,10 +6,10 @@ import useAuthStatus from "../Hooks/useAuthStatus";
 import { getAuth } from "firebase/auth";
 
 export default function Header() {
-  const { loggedIn, checkStatus } = useAuthStatus();
+  //const { loggedIn, checkStatus } = useAuthStatus();
   const auth = getAuth();
   const navigate = useNavigate();
-  console.log(loggedIn);
+  //console.log(loggedIn);
 
   const logOut = () => {
     auth.signOut();
@@ -59,11 +59,11 @@ export default function Header() {
           />
         </Link>
 
-        <ControlButton
+        {/*<ControlButton
           name={loggedIn ? "Logout" : "Log in"}
           className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
           onClick={loggedIn ? logOut : console.log("log in buddy")}
-        />
+        />*/}
 
         <ControlButton
           name={"Download App"}

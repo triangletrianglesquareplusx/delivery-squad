@@ -2,7 +2,11 @@ import React from "react";
 import ControlButton from "../Utilities/ControlButton";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { setDoc, doc, serverTimestamp } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import { ImEnter } from "react-icons/im";
@@ -45,11 +49,16 @@ function RegistrationPage() {
       );
       const userTimestamp = serverTimestamp();
       const uid = userCredentials.user.uid;
+
       await setDoc(doc(db, "users", uid), {
         email: data.emailRegister,
         displayName: data.displayName,
         timeStamp: userTimestamp,
         gender: data.gender,
+      });
+
+      await updateProfile(auth.currentUser, {
+        displayName: data.displayName,
       });
 
       navigate("/");
