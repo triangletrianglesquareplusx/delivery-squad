@@ -8,7 +8,7 @@ const initialState = {
   message: "",
 };
 
-export const register = createAsyncThunk(
+export const registerUser = createAsyncThunk(
   "auth/register",
   async (user, thunkAPI) => {
     console.log(user);

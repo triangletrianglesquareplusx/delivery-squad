@@ -9,7 +9,7 @@ export default function Header() {
   //const { loggedIn, checkStatus } = useAuthStatus();
   const auth = getAuth();
   const navigate = useNavigate();
-  //console.log(loggedIn);
+  console.log(auth);
 
   const logOut = () => {
     auth.signOut();
@@ -43,10 +43,10 @@ export default function Header() {
           />
         </Link>
         <Link to="/restaurants">
-        <ControlButton
-          name={"Nearby"}
-          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-        />
+          <ControlButton
+            name={"Nearby"}
+            className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+          />
         </Link>
         <ControlButton
           name={"Hackatons"}
@@ -59,11 +59,11 @@ export default function Header() {
           />
         </Link>
 
-        {/*<ControlButton
-          name={loggedIn ? "Logout" : "Log in"}
+        <ControlButton
+          name="Logout"
           className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-          onClick={loggedIn ? logOut : console.log("log in buddy")}
-        />*/}
+          onClick={logOut}
+        />
 
         <ControlButton
           name={"Download App"}

@@ -13,7 +13,7 @@ import { db } from "../Firebase/firebase-config";
 import { ImEnter } from "react-icons/im";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { register } from "../Features/authSlice";
+import { registerUser } from "../Features/authSlice";
 
 function RegistrationPage() {
   const navigate = useNavigate();
@@ -66,7 +66,7 @@ function RegistrationPage() {
       await updateProfile(auth.currentUser, {
         displayName: data.displayName,
       });
-
+      dispatch(registerUser(userCredentials.user));
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -84,7 +84,7 @@ function RegistrationPage() {
             <ImEnter />
             <p className="text-sm text-black">
               Register and become a
-              <span className="text-sm text-regalBlue"> friend {user}</span>.
+              <span className="text-sm text-regalBlue"> friend</span>.
             </p>
           </div>
 
