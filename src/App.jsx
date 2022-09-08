@@ -1,28 +1,40 @@
+import React from "react";
+import "./Restaurants.css";
+import { Routes, Route, Outlet } from "react-router-dom";
+import Articles from "./Pages/Articles";
+import SingleArticle from "./Pages/SingleArticle";
+import RestaurantsFullPage from "./Pages/RestaurantsFullPage";
+import Header from "./Components/Header";
+import Footer from "./Components/Footer";
+import Home from "./Pages/Home";
+import Shopping from "./Components/Shopping/Shopping";
+import FAQFullPage from "./Pages/FAQFullPage";
+import LoginPage from "./Pages/LoginPage";
+import RegistrationPage from "./Pages/RegistrationPage";
+import AdminPage from "./Pages/AdminPage";
 import Hackathon from "./Pages/Hackathon";
-import "./index.css";
-import { Routes, Route, Link } from "react-router-dom";
 import Tables from "./Pages/Tables_Admin";
 
 function App() {
   return (
-    <div className="App">
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Hackathon</Link>
-          </li>
-          <li>
-            You can create, edit and delete the Hackathons{" "}
-            <Link to="/tables">here</Link>
-          </li>
-        </ul>
-      </nav>
+    <>
+      <Header />
 
       <Routes>
-        <Route path="/" element={<Hackathon />}></Route>
-        <Route path="/tables" element={<Tables />}></Route>
+        {/*<Route path="/" element={<Hackathon />}/>*/}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:slug" element={<SingleArticle />} />
+        <Route path="/restaurants" element={<RestaurantsFullPage />} />
+        <Route path="/shopping" element={<Shopping />} />
+        <Route path="/faq" element={<FAQFullPage />} />
+        <Route path="/tables" element={<Tables />} />
       </Routes>
-    </div>
+      <Footer />
+    </>
   );
 }
 
