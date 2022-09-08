@@ -12,12 +12,16 @@ import FAQFullPage from "./Pages/FAQFullPage";
 import LoginPage from "./Pages/LoginPage";
 import RegistrationPage from "./Pages/RegistrationPage";
 import AdminPage from "./Pages/AdminPage";
+import Hackathon from "./Pages/Hackathon";
+import Tables from "./Pages/Tables_Admin";
 
-export default function App() {
+function App() {
   return (
     <>
       <Header />
+
       <Routes>
+        {/*<Route path="/" element={<Hackathon />}/>*/}
         <Route path="/" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/register" element={<RegistrationPage />} />
@@ -27,8 +31,11 @@ export default function App() {
         <Route path="/restaurants" element={<RestaurantsFullPage />} />
         <Route path="/shopping" element={<Shopping />} />
         <Route path="/faq" element={<FAQFullPage />} />
+        <Route path="/tables" element={<Tables />} />
       </Routes>
       <Footer />
     </>
   );
 }
+
+export default App;

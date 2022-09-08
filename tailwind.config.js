@@ -29,7 +29,10 @@ module.exports = {
         selectedBlue: "#693de7",
         mutedGray: "#f4f1ff",
         scaledDownWhite: "#f2f2f2",
-        coral: '#fd6d61'
+        coral: '#fd6d61',
+        backWhite: "#FFFFFF",
+        textBlack: "#222222",
+        lineOrange: "#FD6D61"
 
       },
       
