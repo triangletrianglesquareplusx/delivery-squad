@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ControlButton from "../Utilities/ControlButton";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -12,9 +13,14 @@ import { db } from "../Firebase/firebase-config";
 import { ImEnter } from "react-icons/im";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { register } from "../Features/authSlice";
 
 function RegistrationPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isAcheived, message } = useSelector(
+    (state) => state.auth
+  );
   const rules = /\d+/;
   const schema = yup.object().shape({
     emailRegister: yup
@@ -78,7 +84,7 @@ function RegistrationPage() {
             <ImEnter />
             <p className="text-sm text-black">
               Register and become a
-              <span className="text-sm text-regalBlue"> friend</span>.
+              <span className="text-sm text-regalBlue"> friend {user}</span>.
             </p>
           </div>
 
