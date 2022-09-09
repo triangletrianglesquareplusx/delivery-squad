@@ -2,14 +2,27 @@ import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import useAuthStatus from "../Hooks/useAuthStatus";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function Header() {
-  //const { loggedIn, checkStatus } = useAuthStatus();
   const auth = getAuth();
   const navigate = useNavigate();
-  console.log(auth);
+
+  const [userName, setUsername] = useState(null);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+        setUsername(user.displayName);
+      } else {
+        console.log("no user here!");
+        setUsername(null);
+      }
+    });
+  }, []);
 
   const logOut = () => {
     auth.signOut();
@@ -60,9 +73,9 @@ export default function Header() {
         </Link>
 
         <ControlButton
-          name="Logout"
+          name={userName ? "Logout" : "Log in"}
           className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-          onClick={logOut}
+          onClick={userName ? logOut : () => navigate("/login")}
         />
 
         <ControlButton

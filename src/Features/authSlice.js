@@ -19,7 +19,14 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {},
+  extraReducers: {
+    [registerUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [registerUser.fulfilled]: (state) => {
+      state.isLoading = false;
+    },
+  },
 });
-
+export const { addUser } = authSlice.actions;
 export default authSlice.reducer;

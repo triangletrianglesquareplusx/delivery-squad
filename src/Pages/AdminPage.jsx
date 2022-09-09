@@ -12,7 +12,6 @@ function AdminPage() {
   const updateAllRegisteredProfileFields = async (data) => {
     try {
       if (auth.currentUser.displayName !== data.displayName) {
-        console.log(auth.currentUser);
         await updateProfile(auth.currentUser, {
           displayName: data.displayName,
         });
@@ -22,7 +21,7 @@ function AdminPage() {
         });
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 

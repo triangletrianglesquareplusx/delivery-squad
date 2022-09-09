@@ -47,26 +47,8 @@ function RegistrationPage() {
 
   const onSubmit = async (data) => {
     try {
-      const auth = getAuth();
-      const userCredentials = await createUserWithEmailAndPassword(
-        auth,
-        data.emailRegister,
-        data.passwordRegister
-      );
-      const userTimestamp = serverTimestamp();
-      const uid = userCredentials.user.uid;
+      dispatch(registerUser(data.emailRegister));
 
-      await setDoc(doc(db, "users", uid), {
-        email: data.emailRegister,
-        displayName: data.displayName,
-        timeStamp: userTimestamp,
-        gender: data.gender,
-      });
-
-      await updateProfile(auth.currentUser, {
-        displayName: data.displayName,
-      });
-      dispatch(registerUser(userCredentials.user));
       navigate("/");
     } catch (error) {
       console.log(error);
