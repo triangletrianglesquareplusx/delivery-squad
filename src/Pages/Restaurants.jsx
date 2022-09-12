@@ -11,42 +11,85 @@ import { collection, getDocs } from 'firebase/firestore';
 function Restaurants(props) {
 
   const [restaurants, setRestaurants] = useState([]);
+  const [firstOptions, setFirstOptions] = useState(false);
+  const [secondOptions, setSecondOptions] = useState(false);
+  const [thirdOptions, setThirdOptions] = useState(false);
   const [sorted, setSorted] = useState({ sorted: "id", reversed: false });
   const restaurantsCollectionRef = collection(db, "restaurants");
   
   
-  const sortByRating = () => {
-    setSorted({ sorted: "rating", reversed: !sorted.reversed });
-    const restosCopy = [...restaurants];
-    restosCopy.sort((restoA, restoB) => {
-      if(sorted.reversed) {
-        return restoA.rating - restoB.rating;
-      }
-      return restoB.rating - restoA.rating;
-    });
-    setRestaurants(restosCopy);
+  // const sortByRating = () => {
+  //   setSorted({ sorted: "rating", reversed: !sorted.reversed });
+  //   const restosCopy = [...restaurants];
+  //   restosCopy.sort((restoA, restoB) => {
+  //     if(sorted.reversed) {
+  //       return restoA.rating - restoB.rating;
+  //     }
+  //     return restoB.rating - restoA.rating;
+  //   });
+  //   setRestaurants(restosCopy);
+  // };
+  
+  // const sortByDistance = () => {
+  //   setSorted({ sorted: "distance", reversed: !sorted.reversed });
+  //   const restosCopy = [...restaurants];
+  //   restosCopy.sort((restoA, restoB) => {
+  //     if(sorted.reversed) {
+  //       return restoA.distance - restoB.distance;
+  //     }
+  //     return restoB.distance - restoA.distance;
+  //   });
+  //   setRestaurants(restosCopy);
+  // };
+
+  const handleClick = () => {
+    setFirstOptions(!firstOptions);
+  };
+
+  const handleClick2 = () => {
+    setSecondOptions(!secondOptions);
   };
   
-  const sortByDistance = () => {
-    setSorted({ sorted: "distance", reversed: !sorted.reversed });
-    const restosCopy = [...restaurants];
-    restosCopy.sort((restoA, restoB) => {
-      if(sorted.reversed) {
-        return restoA.distance - restoB.distance;
-      }
-      return restoB.distance - restoA.distance;
-    });
-    setRestaurants(restosCopy);
+  const handleClick3 = () => {
+    setThirdOptions(!thirdOptions);
   };
   
   useEffect(() => {
-    const getRestaurants = async () => {
-      const data = await getDocs(restaurantsCollectionRef);
-      setRestaurants(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
-    };
-    
     getRestaurants();
   }, []);
+
+  const getRestaurants = async () => {
+    const data = await getDocs(restaurantsCollectionRef);
+    setRestaurants(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+  };
+  
+  // useEffect(() => {
+  //   let isMounted = true;
+  
+  //   const doFetch = async () => {
+  //     const querySnapshot = await getDocs(restaurantsCollectionRef);
+  //     const arr = [];
+  //     querySnapshot.forEach((doc) => {
+  //       arr.push({
+  //         ...doc.data(),
+  //         id: doc.id,
+  //       });
+  //       if (isMounted) setRestaurants(arr);
+  //     });
+  //   };
+  
+  //   doFetch() // start the async work
+  //     .catch((err) => {
+  //       if (!isMounted) return; // unmounted, ignore.
+  //       // TODO: Handle errors in your component
+  //       console.error("Failed to fetch data", err);
+  //     });
+  
+  //   return () => {
+  //     isMounted = false;
+  //   };
+    
+  // }, []);
   
   return (
       <>
@@ -78,9 +121,30 @@ function Restaurants(props) {
               <p className="text-base not-italic font-normal leading-5 text-white">Sort By</p>
             </div>
             <div className="flex flex-wrap items-center flex-auto sort-categories justify-evenly">
-              <button onClick={sortByRating} className="text-sm font-semibold" value="rating">Ratings</button>
-              <button className="text-sm font-semibold">Cost</button>
-              <button onClick={sortByDistance} className="text-sm font-semibold" value="distance">Distance</button>
+              <button onClick={handleClick} className="relative p-2 text-sm font-semibold rounded-md hover:bg-purple-900 hover:text-white" value="rating" type="button">Ratings</button>
+                {firstOptions && (<div className="absolute z-10 mt-2 bg-white rounded-md shadow-lg w-50 right-1/3 top-2/3 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                  <div className="py-1 bg-gray-200" role="none">
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-0">All</a>
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-1">Ascending</a>
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-2">Descending</a>
+                  </div>
+                </div>)}
+                <button onClick={handleClick2} className="relative p-2 text-sm font-semibold rounded-md hover:bg-purple-900 hover:text-white" type="button">Cost</button>
+                {secondOptions && (<div className="absolute z-10 mt-2 bg-white rounded-md shadow-lg w-50 right-80 top-2/3 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                  <div className="py-1 bg-gray-200" role="none">
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-0">All</a>
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-1">Ascending</a>
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-2">Descending</a>
+                  </div>
+                </div>)}
+                <button onClick={handleClick3} className="relative p-2 text-sm font-semibold rounded-md hover:bg-purple-900 hover:text-white" value="distance">Distance</button>
+                {thirdOptions && (<div className="absolute z-10 mt-2 bg-white rounded-md shadow-lg w-50 right-60 top-2/3 ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                  <div className="py-1 bg-gray-200" role="none">
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-0">All</a>
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-1">Ascending</a>
+                    <a href="/" className="block px-4 py-2 text-sm font-semibold text-gray-700 rounded-md hover:bg-purple-900 hover:text-white" role="menuitem" tabIndex="-1" id="menu-item-2">Descending</a>
+                  </div>
+                </div>)}
             </div>
           </div>
         </div>
