@@ -13,7 +13,7 @@ import { db } from "../Firebase/firebase-config";
 import { ImEnter } from "react-icons/im";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registerUser } from "../Features/authSlice";
+import { assignCurrentUser } from "../Features/authSlice";
 
 function RegistrationPage() {
   const navigate = useNavigate();
@@ -47,7 +47,32 @@ function RegistrationPage() {
 
   const onSubmit = async (data) => {
     try {
-      dispatch(registerUser(data.emailRegister));
+      const auth = getAuth();
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        data.emailRegister,
+        data.passwordRegister
+      );
+      const userTimestamp = serverTimestamp();
+      const uid = userCredentials.user.uid;
+
+      await setDoc(doc(db, "users", uid), {
+        email: data.emailRegister,
+        displayName: data.displayName,
+        timeStamp: userTimestamp,
+        gender: data.gender,
+      });
+
+      await updateProfile(auth.currentUser, {
+        displayName: data.displayName,
+      });
+      console.log(userCredentials.user);
+      const newCreds = {
+        email: userCredentials.user.email,
+        uid: userCredentials.user.uid,
+      };
+      console.log(newCreds);
+      dispatch(assignCurrentUser(newCreds));
 
       navigate("/");
     } catch (error) {

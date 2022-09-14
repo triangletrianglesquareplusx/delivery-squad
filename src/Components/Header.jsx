@@ -22,7 +22,7 @@ export default function Header() {
         setUsername(null);
       }
     });
-  }, []);
+  }, [auth]);
 
   const logOut = () => {
     auth.signOut();
