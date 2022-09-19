@@ -2,35 +2,36 @@ import ControlButton from "../Utilities/ControlButton";
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-
+import { getAuth } from "firebase/auth";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCurrentUser } from "../Features/authSlice";
 export default function Header() {
-  const auth = getAuth();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const auth = getAuth();
+  const { userEmail } = useSelector((state) => state.auth);
+  // const [userName, setUsername] = useState(null);
 
-  const [userName, setUsername] = useState(null);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-        setUsername(user.displayName);
-      } else {
-        console.log("no user here!");
-        setUsername(null);
-      }
-    });
-  }, [auth]);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       console.log(user);
+  //       setUsername(user.displayName);
+  //     } else {
+  //       console.log("no user here!");
+  //       setUsername(null);
+  //     }
+  //   });
+  // }, [auth]);
 
   const logOut = () => {
     auth.signOut();
+    dispatch(clearCurrentUser());
     navigate("/");
   };
 
   const logIn = () => {
-    navigate("/home");
+    navigate("/login");
   };
   return (
     <div className={`flex justify-between items center p-3 w-10/12 mx-auto`}>
@@ -71,12 +72,19 @@ export default function Header() {
             className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
           />
         </Link>
-
-        <ControlButton
-          name={userName ? "Logout" : "Log in"}
-          className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
-          onClick={userName ? logOut : () => navigate("/login")}
-        />
+        {userEmail ? (
+          <ControlButton
+            name={"Logout"}
+            className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+            onClick={logOut}
+          />
+        ) : (
+          <ControlButton
+            name={"Log in"}
+            className={`hidden md:inline md:px-6 md:py-3 md:font-medium hover:text-regalBlue`}
+            onClick={logIn}
+          />
+        )}
 
         <ControlButton
           name={"Download App"}

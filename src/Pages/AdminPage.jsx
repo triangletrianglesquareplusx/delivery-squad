@@ -3,12 +3,13 @@ import ControlButton from "../Utilities/ControlButton";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../Firebase/firebase-config";
 import { useForm } from "react-hook-form";
-
+import { useSelector } from "react-redux";
 function AdminPage() {
   const auth = getAuth();
+  const { userEmail } = useSelector((state) => state.auth);
   const { register, handleSubmit, setValue } = useForm();
   setValue("displayName", auth.currentUser.displayName);
-
+  console.log(userEmail);
   const updateAllRegisteredProfileFields = async (data) => {
     try {
       if (auth.currentUser.displayName !== data.displayName) {

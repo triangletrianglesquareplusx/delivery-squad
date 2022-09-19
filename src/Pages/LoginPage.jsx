@@ -5,13 +5,15 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { loginUser } from "../Features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import { assignCurrentUser } from "../Features/authSlice";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { userEmail, message } = useSelector((state) => state.auth);
+
+  const { userEmail, userUid, isError, isLoading, message } = useSelector(
+    (state) => state.auth
+  );
   const schema = yup.object().shape({
     email: yup.string().email().required(),
     passwordRequired: yup.number().required(),
@@ -26,14 +28,23 @@ function LoginPage() {
   const onSubmit = async (data) => {
     try {
       const auth = getAuth();
-      console.log(auth, data.email, data.passwordRequired);
-      dispatch(loginUser(auth, data.email, data.passwordRequired));
+
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        data.email,
+        data.passwordRequired
+      );
+
+      const serializedCredentials = {
+        email: userCredentials.user.email,
+        uid: userCredentials.user.uid,
+      };
+      dispatch(assignCurrentUser(serializedCredentials));
 
       if (userEmail) {
         navigate("/admin");
       }
     } catch (error) {
-      console.log(message);
       console.log(error);
     }
   };

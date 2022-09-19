@@ -66,15 +66,8 @@ function RegistrationPage() {
       await updateProfile(auth.currentUser, {
         displayName: data.displayName,
       });
-      console.log(userCredentials.user);
-      const newCreds = {
-        email: userCredentials.user.email,
-        uid: userCredentials.user.uid,
-      };
-      console.log(newCreds);
-      dispatch(assignCurrentUser(newCreds));
 
-      navigate("/");
+      navigate("/admin");
     } catch (error) {
       console.log(error);
     }
