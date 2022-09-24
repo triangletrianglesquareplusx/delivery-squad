@@ -1,12 +1,12 @@
 import React from "react";
 import { HiLightBulb } from "react-icons/hi";
 import { useForm } from "react-hook-form";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
-import { assignCurrentUser } from "../Features/authSlice";
+import { loginUser } from "../Features/authSlice";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -26,27 +26,49 @@ function LoginPage() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (data) => {
-    try {
-      const auth = getAuth();
+    // try {
+    //   const auth = getAuth();
 
-      const userCredentials = await signInWithEmailAndPassword(
-        auth,
-        data.email,
-        data.passwordRequired
-      );
+    //   const userCredentials = await signInWithEmailAndPassword(
+    //     auth,
+    //     data.email,
+    //     data.passwordRequired
+    //   );
 
-      const serializedCredentials = {
-        email: userCredentials.user.email,
-        uid: userCredentials.user.uid,
-      };
-      dispatch(assignCurrentUser(serializedCredentials));
+    //   const serializedCredentials = {
+    //     email: userCredentials.user.email,
+    //     uid: userCredentials.user.uid,
+    //   };
+    //   dispatch(assignCurrentUser(serializedCredentials));
 
-      if (userEmail) {
-        navigate("/admin");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    //   if (userEmail) {
+    //     navigate("/admin");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // try {
+    const auth = getAuth();
+    // console.log(auth);
+    // console.log(userEmail);
+    const authObj = {
+      auth: auth,
+      emailUse: data.email,
+      pass: data.passwordRequired,
+    };
+    //console.log(authObj); this auth obj does work!!!
+
+    dispatch(loginUser(authObj))
+      .then((result) => {
+        if (result.type === "auth/login/fulfilled") {
+          navigate("/admin");
+        } else {
+          navigate("/error");
+        }
+      })
+      .catch((error) => {
+        //console.log("error");
+      });
   };
 
   return (

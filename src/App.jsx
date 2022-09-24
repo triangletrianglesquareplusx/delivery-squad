@@ -12,7 +12,7 @@ import FAQFullPage from "./Pages/FAQFullPage";
 import LoginPage from "./Pages/LoginPage";
 import RegistrationPage from "./Pages/RegistrationPage";
 import AdminPage from "./Pages/AdminPage";
-
+import ErrorPage from "./Pages/ErrorPage";
 export default function App() {
   return (
     <>
@@ -20,6 +20,7 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/error" element={<ErrorPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<Articles />} />
