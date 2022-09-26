@@ -15,8 +15,10 @@ function LoginPage() {
     (state) => state.auth
   );
   const schema = yup.object().shape({
-    email: yup.string().email().required(),
-    passwordRequired: yup.number().required(),
+    email: yup.string().email().required("An email is mandatory!"),
+    passwordRequired: yup
+      .number("You must have ints in the pass!")
+      .required("A password is mandatory!"),
   });
 
   const {
@@ -58,17 +60,14 @@ function LoginPage() {
     };
     //console.log(authObj); this auth obj does work!!!
 
-    dispatch(loginUser(authObj))
-      .then((result) => {
-        if (result.type === "auth/login/fulfilled") {
-          navigate("/admin");
-        } else {
-          navigate("/error");
-        }
-      })
-      .catch((error) => {
-        //console.log("error");
-      });
+    dispatch(loginUser(authObj)).then((result) => {
+      console.log(result);
+      if (result.type === "auth/login/fulfilled") {
+        navigate("/admin");
+      } else {
+        navigate("/error");
+      }
+    });
   };
 
   return (
@@ -79,7 +78,7 @@ function LoginPage() {
       >
         <div className="flex justify-center gap-3 text-regalBlue">
           <HiLightBulb />
-          <p className="text-sm text-black">
+          <p className="text-sm text-black" title="greeter">
             Welcome back <span className="text-sm text-regalBlue">friend</span>{" "}
             - enter.
           </p>
@@ -87,6 +86,7 @@ function LoginPage() {
         <p className="text-sm text-center">Email address</p>
         <div className="flex flex-col w-9/12">
           <input
+            data-testid="email-input"
             {...register("email", {
               required: {
                 message: "This field is mandatory!",
@@ -101,6 +101,7 @@ function LoginPage() {
         <p className="text-sm text-center">Password</p>
         <div className="flex flex-col w-9/12 gap-2">
           <input
+            data-testid="pass-input"
             {...register("passwordRequired", { required: true })}
             className="p-2 bg-blue-200 rounded-lg outline-none"
           />
